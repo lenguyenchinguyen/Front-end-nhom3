@@ -1,14 +1,49 @@
-<div class="buttons-row">
-    <button *ngFor="let status of statuses" nbButton [status]="status" hero> Creat</button>
-  <nb-card>
-    <nb-card-header>
-      <h3 class="text-center">List Parent</h3>
-    </nb-card-header>
-  
-    <nb-card-body>
-      <ng2-smart-table [settings]="settings" [source]="data">
-      </ng2-smart-table>
-    </nb-card-body>
-  </nb-card>
-  </div>
+<nb-card>
+  <nb-card-header>
+    <h5>List Parent </h5>
+  </nb-card-header>
 
+  <nb-card-body>
+    <a routerLink="/pages/Parent/add">
+      <button nbButton status="primary" class="add-button" size="small">
+        <i class="nb-plus"></i> Add Parent
+      </button>
+    </a>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Date_of_birth</th>
+        <th>Adrress</th>
+        <th>email</th>
+        <th>gender</th>
+        <th>SDT</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let parent of data">
+        <td>{{ parent.id }}</td>
+        <td>{{ parent.Name}}</td>
+        <td>{{ parent.Date_of_birth}}</td>
+        <td>{{ parent.Adrress}}</td>
+        <td>{{ parent.email}}</td>
+        <td>{{ parent.gender}}</td>
+        <td>{{ parent.SDT}}</td>
+        <td>
+          <a routerLink="/pages/Parent/update">
+            <button nbButton status="success" size="medium" class="float-right">
+              <i class="nb-edit"></i>
+            </button>
+          </a>
+          <button nbButton status="danger" size="medium" class="float-right ml-1 m-lg-2">
+            <i class="nb-trash"></i>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </nb-card-body>
+</nb-card>
