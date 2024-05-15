@@ -4,10 +4,24 @@
         <button (click)="grade11()" nbButton class="btn btn-primary">Grade 11</button>
         <button (click)="grade10()" nbButton class="btn btn-primary">Grade 10</button>
     </div>
-    <table  class="col-12" style="text-align: center; margin-top: 30px;" *ngIf="check == 2">
+    <table class="table" style="text-align: center; margin-top: 30px;" *ngIf="check == 3">
         <thead>
             <tr>
-                <th width="15%">ID</th>
+                <th width="20%">ID</th>
+                <th>Class</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let e of class12">
+                <td>{{e.id}}</td>
+                <td>{{e.class}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table" style="text-align: center; margin-top: 30px;" *ngIf="check == 2">
+        <thead>
+            <tr>
+                <th width="20%">ID</th>
                 <th>Class</th>
             </tr>
         </thead>
@@ -18,10 +32,10 @@
             </tr>
         </tbody>
     </table>
-    <table class="col-12" style="text-align: center; margin-top: 30px;" *ngIf="check == 1">
+    <table class="table" style="text-align: center; margin-top: 30px;" *ngIf="check == 1">
         <thead>
             <tr>
-                <th width="15%">ID</th>
+                <th width="20%">ID</th>
                 <th>Class</th>
             </tr>
         </thead>
@@ -32,20 +46,4 @@
             </tr>
         </tbody>
     </table>
-    <table class="table" *ngIf="check == 3">
-        <thead>
-          <tr>
-            <th width="20%">ID</th>
-            <th>Class</th>
-          </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let e of class12">
-                <td>{{e.id}}</td>
-                <td>{{e.class}}</td>
-            </tr>
-        </tbody>
-
-      </table>
-    
 </div>

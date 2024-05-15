@@ -12,7 +12,7 @@ import { NbComponentShape, NbComponentSize, NbComponentStatus } from '@nebular/t
   styleUrls: ['./grade.component.scss']
 })
 export class GradeComponent implements OnInit{
-  check:number = 0
+  check:number = 0;
 
   settings = {
     add: {
