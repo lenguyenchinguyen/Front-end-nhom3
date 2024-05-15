@@ -1,0 +1,40 @@
+<h3 class="text-center">Add Parent</h3>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6">
+      <nb-card>
+        <nb-card-body>
+          <label for="name">Name</label>
+          <input type="text" id="name"  nbInput fullWidth placeholder="name" />
+          <label for="gender">Gender</label>
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Gender</option>
+            <option value="nam">Nam</option>
+            <option value="nu">Nữ</option>
+          </select>
+          <label for="date_of_birth">Date_of_birth</label>
+          <input type="date" name="date_of_birth" nbInput fullWidth placeholder="Ngày sinh" />
+        </nb-card-body>
+      </nb-card>
+    </div>
+    <div class="col-lg-6">
+      <nb-card>
+        <nb-card-body>
+          <label for="Email">Email</label>
+          <input type="email" name="Email" id="Email" nbInput fullWidth placeholder="email" />
+          <label for="phone">SĐT</label>
+          <input type="number" name="phone" id="phone" nbInput fullWidth placeholder="phone" />
+          <label for="address">Address</label>
+          <input type="text" name="address" id="address" nbInput fullWidth placeholder="Address" />
+        </nb-card-body>
+      </nb-card>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <button *ngFor="let status of statuses" nbButton [status]="status" class="btn btn-primary float-start">
+      ADD
+      </button>
+    </div>
+  </div>
+</div>
