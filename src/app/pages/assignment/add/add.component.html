@@ -1,0 +1,56 @@
+<h3 class="text-center">Teaching Assignment</h3>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6">
+      <nb-card>
+        <nb-card-body>
+          <label for="teacher">Teacher</label>
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Select teacher</option>
+            <option value="teacher">Minh Nhi</option>
+            <option value="teacher">Minh Hieu</option>
+          </select>
+          <label for="subject">Subject</label>
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Select subject</option>
+            <option value="subject">Math</option>
+            <option value="subject">Chemistry</option>
+          </select>
+          <label for="subject">Semester</label>
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Select semester</option>
+            <option value="semester">I</option>
+            <option value="semester">II</option>
+          </select>
+        </nb-card-body>
+      </nb-card>
+    </div>
+    <div class="col-lg-6">
+      <nb-card>
+        <nb-card-body>
+          <label for="day">Day</label>
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Select day</option>
+            <option value="day">Monday</option>
+            <option value="day">Tuesday</option>
+          </select>
+          <label for="session">Session</label>
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Select session</option>
+            <option value="session">Morning</option>
+            <option value="session">Afternoon</option>
+          </select>
+          <label for="periods">Number of periods</label>
+          <input type="number" name="periods" id="periods" class="form-control" placeholder="Number of periods" />
+        </nb-card-body>
+      </nb-card>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <button *ngFor="let status of statuses" nbButton [status]="status" class="btn btn-primary float-start">
+        Add
+      </button>
+    </div>
+  </div>
+</div>

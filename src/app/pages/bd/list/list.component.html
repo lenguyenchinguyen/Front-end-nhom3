@@ -1,0 +1,49 @@
+<nb-card>
+  <nb-card-header>
+      Bảng điểm học sinh
+  </nb-card-header>
+
+  <nb-card-body>
+      
+
+      <table class="table">
+          <thead>
+              <tr>
+                  <th>ID</th>
+                  <th>Họ và tên</th>
+                  <th>Ngữ văn</th>
+                  <th>Toán</th>
+                  <th>Anh văn</th>
+                  <th>Vật lý</th>
+                  <th>Hóa học</th>
+                  <th>Sinh học</th>
+                  <th>Lịch sử</th>
+                  <th>Địa lý</th>
+                  <th>Hành động</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let points of pointstable">
+                  <td>{{ points.id }}</td>
+                  <td>{{ points.name }}</td>
+                  <td>{{ points.nguvan }}</td>
+                  <td>{{ points.toan }}</td>
+                  <td>{{ points.anhvan }}</td>
+                  <td>{{ points.vatly }}</td>
+                  <td>{{ points.hoa }}</td>
+                  <td>{{ points.sinh }}</td>
+                  <td>{{ points.su }}</td>
+                  <td>{{ points.dia }}</td>
+                  <td>
+                      <button nbButton status="success" size="small" class="float-right">
+                          <i class="nb-edit"></i> Sửa
+                        </button>
+                        <button nbButton status="danger" size="small" class="float-right ml-1">
+                          <i class="nb-trash"></i> Xóa
+                        </button>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+  </nb-card-body>
+</nb-card>
