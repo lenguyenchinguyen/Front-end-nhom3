@@ -1,0 +1,38 @@
+<nb-card>
+    <nb-card-header>
+        <h5>Danh sách năm học</h5>
+    </nb-card-header>
+
+    <nb-card-body>
+      <a routerLink="/pages/school-year/add">
+        <button nbButton status="primary" class="add-button" size="small">
+            <i class="nb-plus"></i> Thêm năm học
+        </button>
+      </a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Năm học</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let year of data">
+                    <td>{{ year.id }}</td>
+                    <td>{{ year.schoolyear}}</td>
+                    <td>
+                        <a routerLink="/pages/school-year/update">
+                            <button nbButton status="success" size="small" class="float-right">
+                                <i class="nb-edit"></i>
+                            </button>
+                        </a>
+                        <button nbButton status="danger" size="small" class="float-right ml-1 m-lg-2">
+                            <i class="nb-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </nb-card-body>
+</nb-card>

@@ -1,0 +1,40 @@
+<nb-card>
+    <nb-card-header>
+        <h5>Danh sách học kì</h5>
+    </nb-card-header>
+
+    <nb-card-body>
+      <a routerLink="/pages/semester/add">
+        <button nbButton status="primary" class="add-button" size="small">
+            <i class="nb-plus"></i> Thêm học kì
+        </button>
+      </a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Học kì</th>
+                    <th>Năm học</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let semester of data">
+                    <td>{{ semester.id }}</td>
+                    <td>{{ semester.semester }}</td>
+                    <td>{{ semester.schoolyear }}</td>
+                    <td>
+                        <a routerLink="/pages/semester/update">
+                            <button nbButton status="success" size="small" class="float-right">
+                                <i class="nb-edit"></i>
+                            </button>
+                        </a>
+                        <button nbButton status="danger" size="small" class="float-right ml-1 m-lg-2">
+                            <i class="nb-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </nb-card-body>
+</nb-card>
