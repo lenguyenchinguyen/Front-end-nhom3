@@ -24,10 +24,11 @@
                 <td>{{ teacher.email }}</td>
                 <td>{{ teacher.age }}</td>
                 <td>
-                    <button nbButton status="success" size="small">
+                    <a routerLink="/pages/teacher/update"><button nbButton status="success" size="small">
                         <i class="nb-edit"></i> Edit
                       </button>
-                      <button nbButton status="danger" size="small">
+                    </a>
+                     <button nbButton status="danger" size="small">
                         <i class="nb-trash"></i> Delete
                       </button>
                 </td>

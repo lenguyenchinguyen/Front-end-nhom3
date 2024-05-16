@@ -44,12 +44,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
         title: 'List',
         icon: 'arrow-right',
         link: '/pages/student/list',
-      },
-      {
-        title: 'Update',
-        icon: 'arrow-right',
-        link: '/pages/student/update',
-      },
+      }
     ]
   },
   {
@@ -65,12 +60,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
         title: 'List',
         icon: 'arrow-right',
         link: '/pages/parent/list',
-      },
-      {
-        title: 'Update',
-        icon: 'arrow-right',
-        link: '/pages/parent/update',
-      },
+      }
     ]
   },
   {
@@ -145,12 +135,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
         title: 'List',
         icon: 'arrow-right',
         link: '/pages/teacher/list',
-      },
-      {
-        title: 'Update',
-        icon: 'arrow-right',
-        link: '/pages/teacher/update',
-      },
+      }
     ]
   },
   {
@@ -166,12 +151,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
         title: 'List',
         icon: 'arrow-right',
         link: '/pages/assignment/list',
-      },
-      {
-        title: 'Update',
-        icon: 'arrow-right',
-        link: '/pages/assignment/update',
-      },
+      }
     ]
   },
 
