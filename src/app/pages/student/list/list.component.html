@@ -1,13 +1,52 @@
-<div class="buttons-row">
-    <button *ngFor="let status of statuses" nbButton [status]="status" hero> Creat</button>
-  <nb-card>
-    <nb-card-header>
-      <h3 class="text-center">List Student</h3>
-    </nb-card-header>
-  
-    <nb-card-body>
-      <ng2-smart-table [settings]="settings" [source]="data">
-      </ng2-smart-table>
-    </nb-card-body>
-  </nb-card>
-  </div>
+<nb-card>
+  <nb-card-header>
+    <h5>List Student </h5>
+  </nb-card-header>
+
+  <nb-card-body>
+    <a routerLink="/pages/Student/add">
+      <button nbButton status="primary" class="add-button" size="small">
+        <i class="nb-plus"></i> Add Student
+      </button>
+    </a>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Date_of_birth</th>
+        <th>Adrress</th>
+        <th>email</th>
+        <th>gender</th>
+        <th>SDT</th>
+        <th>Class</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let student of data">
+        <td>{{ student.id }}</td>
+        <td>{{ student.Name}}</td>
+        <td>{{ student.Date_of_birth}}</td>
+        <td>{{ student.Adrress}}</td>
+        <td>{{ student.email}}</td>
+        <td>{{ student.gender}}</td>
+        <td>{{ student.SDT}}</td>
+        <td>{{ student.Class}}</td>
+
+        <td>
+          <a routerLink="/pages/Student/update">
+            <button nbButton status="success" size="medium" class="float-right">
+              <i class="nb-edit"></i>
+            </button>
+          </a>
+          <button nbButton status="danger" size="medium" class="float-right ml-1 m-lg-2">
+            <i class="nb-trash"></i>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </nb-card-body>
+</nb-card>
