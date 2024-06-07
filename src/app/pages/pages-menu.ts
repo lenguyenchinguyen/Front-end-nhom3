@@ -15,15 +15,10 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'layers-outline',
     children: [
       {
-        title: 'Add',
-        icon: 'arrow-right',
-        link: '/pages/dslop/add',
-      },
-      {
         title: 'List',
         icon: 'arrow-right',
-        link: '/pages/dslop/list',
-      },
+        link: '/pages/classlist/list',
+      }
     ]
   },
   {

@@ -1,0 +1,57 @@
+<div class="row">
+  <div class="col-lg-12">
+    <nb-card>
+      <nb-card-header>
+        <h5>Add Teacher</h5>
+      </nb-card-header>
+      <nb-card-body>
+        <form (ngSubmit)="creatClass()" [formGroup]="creatForm">
+          <div class="row mt-3">
+            <div class="col-lg-6">
+              <label for="maKhoi">Blocks</label>
+              <select class="form-select" formControlName="maKhoi">
+                <option value="" disabled selected>Select Blocks</option>
+                <option *ngFor="let blocks of listBlocks" value="{{blocks.maKhoi}}">{{blocks.ten_khoi}}</option>
+              </select>
+              <span class="text-danger"
+                *ngIf="creatForm.get('maKhoi')!.invalid && (creatForm.get('maKhoi')!.dirty || creatForm.get('maKhoi')!.touched)">Not
+                be empty !
+              </span>
+            </div>
+            <div class="col-lg-6">
+              <label for="maGV">Teachers</label>
+              <select class="form-select" formControlName="maGV">
+                <option value="" disabled selected>Select Teachers</option>
+                <option *ngFor="let teachers of listGV" value="{{teachers.maGV}}">{{teachers.ten_GV}}</option>
+              </select>
+              <span class="text-danger"
+                *ngIf="creatForm.get('maGV')!.invalid && (creatForm.get('maGV')!.dirty || creatForm.get('maGV')!.touched)">Not
+                be empty !
+              </span>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-lg-12">
+              <label for="ten_lop">Class Name</label>
+              <input type="text" formControlName="ten_lop" nbInput fullWidth placeholder="Education Level" ngModel />
+            </div>
+            <span class="text-danger"
+              *ngIf="creatForm.get('ten_lop')!.invalid && (creatForm.get('ten_lop')!.dirty || creatForm.get('ten_lop')!.touched)">Not
+              be empty !
+            </span>
+          </div>
+          <div class="row mt-3">
+            <div class="col-mb-4">
+              <button type="submit" nbButton status="primary" class="btn btn-primary">
+                Add
+              </button>
+              <a routerLink="/pages/classlist/list"><button nbButton class="btn btn-secondary">
+                Back
+              </button></a>
+            </div>
+          </div>
+        </form>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

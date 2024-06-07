@@ -4,6 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { DslopComponent } from './dslop.component';
 import { AddComponent } from './add/add.component';
 import { ListComponent } from './list/list.component';
+import { UpdateComponent } from './update/update.component';
+import { DeleteComponent } from './delete/delete.component';
 
 const routes: Routes = [
   {
@@ -17,6 +19,14 @@ const routes: Routes = [
       {
         path: 'add',
         component: AddComponent,
+      },
+      {
+        path: 'delete/:id',
+        component: DeleteComponent,
+      },
+      {
+        path: 'update/:id',
+        component: UpdateComponent,
       },
     ],
   },

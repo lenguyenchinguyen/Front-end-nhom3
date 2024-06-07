@@ -16,7 +16,7 @@ import { GradeComponent } from './grade/grade.component';
     ThemeModule,
     DashboardModule,
     NbMenuModule,
-    PaginatorModule,
+    PaginatorModule
   ],
   declarations: [
     PagesComponent,

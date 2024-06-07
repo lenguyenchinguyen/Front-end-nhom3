@@ -16,9 +16,12 @@ import { ThemeModule } from '../../@theme/theme.module';
 import { DsRoutingModule } from './dslop-routing.module';
 import { DslopComponent } from './dslop.component';
 import { AddComponent } from './add/add.component';
-import { FormsModule as ngFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule as ngFormsModule } from '@angular/forms';
 import { ListComponent } from './list/list.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { UpdateComponent } from './update/update.component';
+import { DeleteComponent } from './delete/delete.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -35,12 +38,16 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
     NbSelectModule,
     NbIconModule,
     ngFormsModule,
-    Ng2SmartTableModule
+    Ng2SmartTableModule,
+    FormsModule, 
+    ReactiveFormsModule
   ],
   declarations: [
     DslopComponent,
     AddComponent,
     ListComponent,
+    UpdateComponent,
+    DeleteComponent,
   ],
 })
 export class DslopModule { }

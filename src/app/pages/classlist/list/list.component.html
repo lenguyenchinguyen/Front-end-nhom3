@@ -1,0 +1,56 @@
+<div class="container">
+  <nb-card>
+    <nb-card-header>
+      <h5>Class List</h5>
+    </nb-card-header>
+    <nb-card-body>
+      <a routerLink="/pages/classlist/add">
+        <button nbButton status="primary" class="add-button" size="small">
+          <i class="nb-plus"></i> Add New Class
+        </button>
+      </a>
+      <table class="table" >
+        <thead>
+        <tr>
+          <th scope="col" width='15%'>STT</th>
+          <th scope="col" width='15%'>Blocks</th>
+          <th scope="col" width='30%'>Class Name</th>
+          <th scope="col" width='20%'>Teachers</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let class of data; index as i">
+          <td>{{ i+1 }}</td>
+          <td>
+            <div *ngFor="let blocks of bl">
+              <span *ngIf="class.maKhoi == blocks.maKhoi">
+                    {{blocks.ten_khoi}}
+              </span>
+            </div>
+          </td>  
+          <td>{{ class.ten_lop}}</td>  
+          <td>
+            <div *ngFor="let gvv of gv">
+              <span *ngIf="class.maGV == gvv.maGV">
+                    {{gvv.ten_GV}}
+              </span>
+            </div>
+          </td>  
+          <td>
+            <a routerLink="/pages/classlist/update/{{ class.maLop }}">
+              <button nbButton status="success" size="medium" class="float-right">
+                <i class="nb-edit"></i>
+              </button>
+            </a>
+            <a routerLink="/pages/classlist/delete/{{ class.maLop }}"><button nbButton status="danger" size="medium" class="float-right ml-1 m-lg-2">
+              <i class="nb-trash"></i>
+            </button>
+            </a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </nb-card-body>
+  </nb-card>
+</div>
