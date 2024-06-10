@@ -12,12 +12,15 @@ import {
   NbSelectModule,
   NbUserModule,
 } from '@nebular/theme';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { ThemeModule } from '../../@theme/theme.module';
 import { BdComponent } from './bd.component';
 import { BdRoutingModule } from './bd-routing.module';
 import { FormsModule as ngFormsModule } from '@angular/forms';
 import { ListComponent } from './list/list.component';
+import { AddComponent } from './add/add.component';
+import { UpdateComponent } from './update/update.component';
 
 
 @NgModule({
@@ -36,10 +39,13 @@ import { ListComponent } from './list/list.component';
     NbSelectModule,
     NbIconModule,
     ngFormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     BdComponent,
     ListComponent,
+    AddComponent,
+    UpdateComponent,
 
   ],
 })
