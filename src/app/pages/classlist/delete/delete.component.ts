@@ -18,7 +18,7 @@ export class DeleteComponent {
       let id =+ this.route.snapshot.params['id'];
       this.classes.deleteClass(id).subscribe(res =>{
         alert('Delete success')
-          this.router.navigate(['/pages/classlist/list']);
+          this.router.navigate(['/pages/dslop/list']);
       },error => {
         console.error(error)
       });

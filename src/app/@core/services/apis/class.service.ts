@@ -3,10 +3,10 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 export interface IClasses {
-    maLop: number,
-    maKhoi: number,
-    ten_lop: string,
-    maGV: number
+  maLop: number,
+  maKhoi: number,
+  ten_lop: string,
+  maGV: number
 }
 
 @Injectable({
@@ -15,7 +15,7 @@ export interface IClasses {
 export class ClassService {
   constructor(private http: HttpClient) {}
 
-  API_URL = `http://127.0.0.1:4500/api/class/`;
+  API_URL = `http://127.0.0.1:3300/api/class/`;
 
   getAllClass(): Observable<any> {
     return this.http.get(this.API_URL)
@@ -46,7 +46,7 @@ export class ClassService {
   }
 
   getAllGV(): Observable<any> {
-    return this.http.get('http://127.0.0.1:4500/api/teachers/')
+    return this.http.get('http://127.0.0.1:3300/api/teachers/')
   }
 
 

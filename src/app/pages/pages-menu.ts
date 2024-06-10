@@ -15,11 +15,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'layers-outline',
     children: [
       {
-        title: 'Add',
-        icon: 'arrow-right',
-        link: '/pages/dslop/add',
-      },
-      {
         title: 'List',
         icon: 'arrow-right',
         link: '/pages/dslop/list',
@@ -58,11 +53,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'book-outline',
     children: [
       {
-        title: 'Add',
-        icon: 'arrow-right',
-        link: '/pages/subject/add',
-      },
-      {
         title: 'List',
         icon: 'arrow-right',
         link: '/pages/subject/list',
@@ -85,11 +75,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'more-vertical-outline',
     children: [
       {
-        title: 'Add',
-        icon: 'arrow-right',
-        link: '/pages/school-year/add',
-      },
-      {
         title: 'List',
         icon: 'arrow-right',
         link: '/pages/school-year/list',
@@ -100,11 +85,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
     title: 'Semester',
     icon: 'options-2-outline',
     children: [
-      {
-        title: 'Add',
-        icon: 'arrow-right',
-        link: '/pages/semester/add',
-      },
       {
         title: 'List',
         icon: 'arrow-right',
@@ -117,11 +97,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'person-outline',
     children: [
       {
-        title: 'Add',
-        icon: 'arrow-right',
-        link: '/pages/teacher/add',
-      },
-      {
         title: 'List',
         icon: 'arrow-right',
         link: '/pages/teacher/list',
@@ -132,11 +107,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
     title: 'Teaching Assignment',
     icon: 'briefcase-outline',
     children: [
-      {
-        title: 'Add',
-        icon: 'arrow-right',
-        link: '/pages/assignment/add',
-      },
       {
         title: 'List',
         icon: 'arrow-right',

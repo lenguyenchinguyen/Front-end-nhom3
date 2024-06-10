@@ -19,7 +19,7 @@ export interface Teaching {
   providedIn: 'root',
 })
 export class Teaching_assignmentService {
-  API_URL = 'http://127.0.0.1:2000/api';
+  API_URL = 'http://127.0.0.1:3300/api';
 
   constructor(private http: HttpClient) {}
 

@@ -4,7 +4,7 @@
       <h5>Class List</h5>
     </nb-card-header>
     <nb-card-body>
-      <a routerLink="/pages/classlist/add">
+      <a routerLink="/pages/dslop/add">
         <button nbButton status="primary" class="add-button" size="small">
           <i class="nb-plus"></i> Add New Class
         </button>
@@ -28,22 +28,22 @@
                     {{blocks.ten_khoi}}
               </span>
             </div>
-          </td>  
-          <td>{{ class.ten_lop}}</td>  
+          </td>
+          <td>{{ class.ten_lop}}</td>
           <td>
             <div *ngFor="let gvv of gv">
               <span *ngIf="class.maGV == gvv.maGV">
                     {{gvv.ten_GV}}
               </span>
             </div>
-          </td>  
+          </td>
           <td>
-            <a routerLink="/pages/classlist/update/{{ class.maLop }}">
+            <a routerLink="/pages/dslop/update/{{ class.maLop }}">
               <button nbButton status="success" size="large" class="float-right">
                 <i class="nb-edit"></i>
               </button>
             </a>
-            <a routerLink="/pages/classlist/delete/{{ class.maLop }}"><button nbButton status="danger" size="large" class="float-right ml-1 m-lg-2">
+            <a routerLink="/pages/dslop/delete/{{ class.maLop }}"><button nbButton status="danger" size="large" class="float-right ml-1 m-lg-2">
               <i class="nb-trash"></i>
             </button>
             </a>
