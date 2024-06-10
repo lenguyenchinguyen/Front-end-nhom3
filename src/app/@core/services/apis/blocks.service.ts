@@ -19,25 +19,25 @@ export class BlocksService {
     return this.http.get(this.API_URL)
   }
 
-  postBlocks(data: Iblocks): Observable<any> {
-    return this.http.post('https://knowledgehub.demopolyct.online/api/unit',
-      {
-        ten_khoi: data.ten_khoi,
-      }
-    );
-  }
-
-  deleteBlocks(id:number){
-    return this.http.delete('https://knowledgehub.demopolyct.online/api/unit/'+id)
-  }
-
-  getBlocksById(id: number): Observable<any> {
+  getOneBlocks(id: number): Observable<any> {
     return this.http.get(
-      'https://knowledgehub.demopolyct.online/api/unit/' + id
+      this.API_URL + id
     );
   }
 
-  updateUnit(id: number, data: Iblocks){
-    return this.http.put('https://knowledgehub.demopolyct.online/api/unit/'+id, data);
-  }
+  // postBlocks(data: Iblocks): Observable<any> {
+  //   return this.http.post('https://knowledgehub.demopolyct.online/api/unit',
+  //     {
+  //       ten_khoi: data.ten_khoi,
+  //     }
+  //   );
+  // }
+
+  // deleteBlocks(id:number){
+  //   return this.http.delete('https://knowledgehub.demopolyct.online/api/unit/'+id)
+  // }
+
+  // updateUnit(id: number, data: Iblocks){
+  //   return this.http.put('https://knowledgehub.demopolyct.online/api/unit/'+id, data);
+  // }
 }

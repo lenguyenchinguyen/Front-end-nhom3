@@ -15,6 +15,7 @@ export class UpdateComponent implements OnInit {
   updateForm: FormGroup
 
   oneClass: any
+  oneBlock:any
   listBlocks!: []
   listGV!: []
 
@@ -34,6 +35,7 @@ export class UpdateComponent implements OnInit {
     this.getBlocks()
     this.getTeachers()
     this.getOneClass()
+    this.getOneBlocks()
   }
 
   updateClass() {
@@ -52,6 +54,7 @@ export class UpdateComponent implements OnInit {
     let id =+ this.route.snapshot.params['id'];
     this.classes.getClassById(id).subscribe(res=>{
       this.oneClass = res.data 
+      console.log(this.oneClass);
     })
   }
 
@@ -59,6 +62,14 @@ export class UpdateComponent implements OnInit {
     this.blocks.getAllBlocks().subscribe(res=>{
       this.listBlocks = res.data;
       console.log(this.listBlocks);
+    })
+  }
+
+  getOneBlocks(){
+    let id =+ this.route.snapshot.params['id'];
+    this.blocks.getOneBlocks(id).subscribe(res=>{
+      this.oneBlock = res.data
+      console.log();
     })
   }
 

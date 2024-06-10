@@ -2,13 +2,13 @@
     <table class="table">
         <thead class="thead-light">
             <tr>
-                <th width="40%">ID Blocks</th>
+                <th width="40%">STT</th>
                 <th>Blocks</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let e of listBlock">
-                <td>{{e.maKhoi}}</td>
+            <tr *ngFor="let e of listBlock; index as i">
+                <td>{{i + 1}}</td>
                 <td>{{e.ten_khoi}}</td>
             </tr>
         </tbody>
