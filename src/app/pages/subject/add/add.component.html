@@ -1,1 +1,24 @@
-<p>add works!</p>
+<div class="row">
+    <div class="col-lg-12">
+      <nb-card>
+        <nb-card-header>
+          <h5>Add Subject</h5>
+        </nb-card-header>
+        <nb-card-body>
+          <form (ngSubmit)="create()" [formGroup]="addForm">
+            <div class="row mt-3">
+                <div class="col-lg-12">
+                  <label for="ten_mon" class="d-flex align-items-center mb-2">Subject Name</label>
+                  <input type="text" nbInput fullWidth placeholder="Tên môn học" name="ten_mon" formControlName="ten_mon"/>
+                  <div class="text-danger"
+                            *ngIf="addForm.get('ten_mon')!.invalid && (addForm.get('ten_mon')!.dirty || addForm.get('ten_mon')!.touched)">
+                            Tên môn không được bỏ trống !
+                        </div>
+                  <button type="submit" nbButton status="primary" class="btn btn-primary mt-2">Add</button>
+                </div>
+              </div>
+          </form>
+        </nb-card-body>
+      </nb-card>
+    </div>
+  </div>

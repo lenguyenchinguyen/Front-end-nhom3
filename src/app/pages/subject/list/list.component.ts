@@ -1,53 +1,40 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ISubect } from 'app/@core/interfaces/subject.interface';
+import { SubjectService } from 'app/@core/services/apis/subject.service';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
-export class ListComponent {
+export class ListComponent implements OnInit {
 
-  subjecttable = [
-    { id: 1, name: 'Ngữ văn', teacher: "cô Lê Kim Thoa" },
-    { id: 2, name: 'Toán', teacher: "thầy Cao Văn Xuyên"},
-    { id: 3, name: 'Anh văn',teacher: "cô Hồ Thanh Dung" },
-    { id: 4, name: 'Vật lý',teacher: "cô Nguyễn Trần Thanh Quang" },
-    { id: 5, name: 'Hóa học',teacher: "cô Dương Văn Tuấn" },
-    { id: 6, name: 'Sinh học',teacher: "cô Ngô Thị Mỹ Linh" },
-    { id: 7, name: 'Lịch sử',teacher: "cô Nguyễn Thanh Liêm" },
-    { id: 8, name: 'Địa Lý',teacher: "cô Trần Văn Thái" },
+  constructor(
+    private sub: SubjectService,
 
-  ];
-  
-  settings = {
-    add: {
-      addButtonContent: '<i class="nb-plus"></i>',
-      createButtonContent: '<i class="nb-checkmark"></i>',
-      cancelButtonContent: '<i class="nb-close"></i>',
-    },
-    edit: {
-      editButtonContent: '<i class="nb-edit"></i>',
-      saveButtonContent: '<i class="nb-checkmark"></i>',
-      cancelButtonContent: '<i class="nb-close"></i>',
-    },
-    delete: {
-      deleteButtonContent: '<i class="nb-trash"></i>',
-      confirmDelete: true,
-    },
-    columns: {
-      id: {
-        title: 'ID',
-        type: 'number',
-      },
-      name: {
-        title: 'Name',
-        type: 'string',
-      },
-      teacher: {
-        title: 'teacher',
-        type: 'string',
-      },
-     
-    },
-  };
+  ) { }
+  LitsSub!: ISubect
+
+  ngOnInit(): void {
+    this.getSubject();
+  }
+
+  getSubject() {
+    this.sub.getAllSubject().subscribe(res => {
+      this.LitsSub = res.data
+      console.log(res);
+    }, error => {
+      console.error(error);
+    });
+  }
+
+  deleteSubject(maMon: number) {
+    const confirmDelete = confirm("Bạn có chắc chắn muốn xóa môn học này?");
+    if (confirmDelete) {
+      this.sub.deleteSubject(maMon).subscribe(res => {
+        console.log(res);
+        this.getSubject();
+      });
+    }
+  }
 }
