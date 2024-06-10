@@ -1,83 +1,44 @@
-<div class="row">
-  <div class="col-lg-12">
-    <nb-card>
-      <nb-card-header>
-        <h5>Update Teacher</h5>
-      </nb-card-header>
-      <nb-card-body>
-        <form [formGroup]="putTeacher" (ngSubmit)="saveTeacher()">
-          <div class="row mt-3">
-            <div class="col-lg-6">
-              <label for="ten_GV">Name</label>
-              <input type="text" nbInput fullWidth placeholder="Name" name="ten_GV" formControlName="ten_GV" />
-              <div class="text-danger"
-                *ngIf="putTeacher.get('ten_GV')?.invalid && (putTeacher.get('ten_GV')?.dirty || putTeacher.get('ten_GV')?.touched)">
-                <span *ngIf="putTeacher.get('ten_GV')?.errors?.required">Name không được bỏ trống!</span>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <label for="gioi_tinh">Gender</label>
-              <select class="form-select" name="gioi_tinh" formControlName="gioi_tinh">
-                <option value="" disabled>Select gender</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="row mt-3">
-            <div class="col-lg-6">
-              <label for="email">Email</label>
-              <input type="email" name="email" nbInput fullWidth placeholder="Email" formControlName="email" />
-              <div class="text-danger"
-                *ngIf="putTeacher.get('email')?.invalid && (putTeacher.get('email')?.dirty || putTeacher.get('email')?.touched)">
-                <span *ngIf="putTeacher.get('email')?.errors?.required">Email không được bỏ trống!</span>
-                <span *ngIf="putTeacher.get('email')?.errors?.email">Email không hợp lệ!</span>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <label for="trinh_do">Level</label>
-              <input type="text" name="trinh_do" nbInput fullWidth placeholder="Level" formControlName="trinh_do" />
-              <div class="text-danger"
-                *ngIf="putTeacher.get('trinh_do')?.invalid && (putTeacher.get('trinh_do')?.dirty || putTeacher.get('trinh_do')?.touched)">
-                <span *ngIf="putTeacher.get('trinh_do')?.errors?.required">Level không được bỏ trống!</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="row mt-3">
-            <div class="col-lg-6">
-              <label for="mat_khau">Password</label>
-              <input type="password" name="mat_khau" nbInput fullWidth placeholder="Password"
-                formControlName="mat_khau" />
-              <div class="text-danger"
-                *ngIf="putTeacher.get('mat_khau')?.invalid && (putTeacher.get('mat_khau')?.dirty || putTeacher.get('mat_khau')?.touched)">
-                <span *ngIf="putTeacher.get('mat_khau')?.errors?.required">Password không được bỏ trống!.</span>
-                <span *ngIf="putTeacher.get('mat_khau')?.errors?.minlength">Password từ 8 ký tự!.</span>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <label for="dien_thoai">Phone Number</label>
-              <input type="number" name="dien_thoai" nbInput fullWidth placeholder="Phone Number"
-                formControlName="dien_thoai" />
-              <div class="text-danger"
-                *ngIf="putTeacher.get('dien_thoai')?.invalid && (putTeacher.get('dien_thoai')?.dirty || putTeacher.get('dien_thoai')?.touched)">
-                <span *ngIf="putTeacher.get('dien_thoai')?.errors?.required">Phone không được bỏ trống!</span>
-                <span *ngIf="putTeacher.get('dien_thoai')?.errors?.pattern">Phone phải có đúng 10 chữ số!</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="row mb-3 mt-3">
-            <div class="col-lg-12">
-              <button type="submit" nbButton status="success" class="btn btn-success float-start me-2">Update</button>
-            <a routerLink="/pages/teacher/list">
-              <button nbButton status="secondary" class="btn btn-secondary float-start">Cancel</button>
-            </a>
-          </div>
-          </div>
-        </form>
-      </nb-card-body>
-    </nb-card>
+<h3 class="text-center">Add Teacher</h3>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6">
+      <nb-card>
+        <nb-card-body>
+          <label for="name">Name</label>
+          <input type="text" nbInput fullWidth placeholder="Name" />
+          <label for="gender">Gender</label>
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Select gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+          <label for="date_of_birth">Date of Birth</label>
+          <input type="date" name="date_of_birth" nbInput fullWidth placeholder="Date of Birth" />
+          <label for="class">Class</label>
+          <input type="text" name="class" id="class" nbInput fullWidth placeholder="Class" />
+        </nb-card-body>
+      </nb-card>
+    </div>
+    <div class="col-lg-6">
+      <nb-card>
+        <nb-card-body>
+          <label for="address">Address</label>
+          <input type="text" name="address" id="address" nbInput fullWidth placeholder="Address" />
+          <label for="phone">Phone Number</label>
+          <input type="text" name="phone" id="phone" nbInput fullWidth placeholder="Phone Number" />
+          <label for="level">Education Level</label>
+          <input type="text" name="address" id="address" nbInput fullWidth placeholder="Education Level" />
+          <label for="subject">Subject</label>
+          <input type="text" name="subject" id="subject" nbInput fullWidth placeholder="Subject" />
+        </nb-card-body>
+      </nb-card>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <button *ngFor="let status of statuses" nbButton [status]="status" class="btn btn-primary float-start">
+        Update
+      </button>
+    </div>
   </div>
 </div>

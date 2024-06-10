@@ -18,16 +18,12 @@ import { ThemeModule } from '../../@theme/theme.module';
 import { TeacherRoutingModule } from './teacher-routing.module';
 import { TeacherComponent } from './teacher.component';
 import { AddComponent } from './add/add.component';
-import { FormsModule, FormsModule as ngFormsModule } from '@angular/forms';
+import { FormsModule as ngFormsModule } from '@angular/forms';
 import { UpdateComponent } from './update/update.component';
 import { ListComponent } from './list/list.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { DeleteComponent } from './delete/delete.component';
 
 @NgModule({
   imports: [
-    FormsModule,
-    ReactiveFormsModule,
     Ng2SmartTableModule,
     ThemeModule,
     NbInputModule,
@@ -48,8 +44,6 @@ import { DeleteComponent } from './delete/delete.component';
     AddComponent,
     UpdateComponent,
     ListComponent,
-    DeleteComponent,
   ],
-  providers: [DeleteComponent]
 })
 export class TeacherModule { }

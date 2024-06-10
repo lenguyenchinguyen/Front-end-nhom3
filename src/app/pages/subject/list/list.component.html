@@ -5,28 +5,32 @@
   
     <nb-card-body>
         
-        <button class="btn btn-primary mb-2" [routerLink]="'/pages/subject/add'">Thêm mới</button>
+  
         <table class="table">
             <thead>
                 <tr>
-                    <th>STT</th>
+                    <th>Mã môn</th>
                     <th>Môn học</th>
-                    <th>Hành động</th>
+                    <th>Giáo viên đảm nhiệm</th>
+                   
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let subject of LitsSub; index as i">
-                    <td>{{ i+1 }}</td>
-                    <td>{{ subject.ten_mon }}</td>
+                <tr *ngFor="let subject of subjecttable">
+                    <td>{{ subject.id }}</td>
+                    <td>{{ subject.name }}</td>
+                    <td>{{ subject.teacher }}</td>
+                    
                     <td>
-                       
-                          <button nbButton status="danger" size="small" class="float-right ml-1" (click)="deleteSubject(subject.maMon)">
-                            <i class="nb-trash" ></i> Xóa
+                        <button nbButton status="success" size="small" class="float-right">
+                            <i class="nb-edit"></i> Sửa
+                          </button>
+                          <button nbButton status="danger" size="small" class="float-right ml-1">
+                            <i class="nb-trash"></i> Xóa
                           </button>
                     </td>
                 </tr>
             </tbody>
-
         </table>
     </nb-card-body>
   </nb-card>

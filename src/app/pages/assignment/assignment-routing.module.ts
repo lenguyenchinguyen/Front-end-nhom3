@@ -17,7 +17,7 @@ const routes: Routes = [
           component: AddComponent,
         },
         {
-          path: 'update/:maASM',
+          path: 'update',
           component: UpdateComponent,
         },
         {

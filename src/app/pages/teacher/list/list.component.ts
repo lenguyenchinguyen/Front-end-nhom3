@@ -1,64 +1,87 @@
-import { Component, OnInit } from '@angular/core';
-
-import { TeacherService } from 'app/@core/services/apis/teacher.service';
-import { DeleteComponent } from '../delete/delete.component';
-
-export interface ITeacher {
-  maGV: number;
-  ten_GV: string;
-  gioi_tinh: string;
-  email: string;
-  trinh_do: string;
-  password: string;
-  dien_thoai: string;
-}
+import { Component } from '@angular/core';
+import { TeacherService, ITeacher } from 'app/@core/services/apis/teacher.service';
 
 @Component({
   selector: 'ngx-smart-table',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
 })
-export class ListComponent implements OnInit {
-  teachers: ITeacher []= [];
-  private _listFilter: string = '';
-  allTeachers: ITeacher[] = [];
+export class ListComponent {
+  teachers!: ITeacher[]
+  constructor(
+    private teacherService: TeacherService) {
+    this.teacherService.getTeachers().subscribe({
+      next: (data) => {
+        this.teachers = data;
+      },
+      error: () => {
 
-  constructor(private teacherService: TeacherService, private deleteTeacher: DeleteComponent) {}
-
-  ngOnInit(): void {
-    this.getTeacher();
+      }
+    });
+  }
+  delete(id: ITeacher) {
+    this.teacherService.deleteTeacher(id).subscribe({
+      next: () => {
+        console.log('xoa thanh cong');
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
   }
 
-  get listFilter(): string {
-    return this._listFilter;
-  }
-
-  set listFilter(value: string) {
-    this._listFilter = value;
-    this.teachers = this.listFilter ? this.performFilter(this.listFilter) : this.allTeachers;
-  }
-
-  performFilter(filterBy: string): ITeacher[] {
-    filterBy = filterBy.toLocaleLowerCase();
-    return this.teachers.filter((teacher: ITeacher) =>
-      teacher.ten_GV.toLocaleLowerCase().includes(filterBy)
-    );
-  }
-
-  getTeacher(){
-    this.teacherService.getAllTeacher().subscribe(res =>{
-      this.teachers = res.data;
-      this.allTeachers = res.data;
-      console.log(res);
-    },error => {
-      console.log(error);
-  });
-  }
-
-  delete(maGV: number){
-    if(confirm('Có muốn xóa')){
-      this.deleteTeacher.deleteTeacher(maGV);
-      
-    }
-  }
+  settings = {
+    add: {
+      addButtonContent: '<i class="nb-plus"></i>',
+      createButtonContent: '<i class="nb-checkmark"></i>',
+      cancelButtonContent: '<i class="nb-close"></i>',
+    },
+    edit: {
+      editButtonContent: '<i class="nb-edit"></i>',
+      saveButtonContent: '<i class="nb-checkmark"></i>',
+      cancelButtonContent: '<i class="nb-close"></i>',
+    },
+    delete: {
+      deleteButtonContent: '<i class="nb-trash"></i>',
+      confirmDelete: true,
+    },
+    columns: {
+      id: {
+        title: 'ID',
+        type: 'number',
+      },
+      name: {
+        title: 'Name',
+        type: 'string',
+      },
+      gender: {
+        title: 'Gender',
+        type: 'string',
+      },
+      dateOfBirth: {
+        title: 'Date of Birth',
+        type: 'string',
+      },
+      class: {
+        title: 'Class',
+        type: 'string',
+      },
+      address: {
+        title: 'Address',
+        type: 'string',
+      },
+      phone: {
+        title: 'Phone',
+        type: 'string',
+      },
+      educationLevel: {
+        title: 'Education Level',
+        type: 'string',
+      },
+      subject: {
+        title: 'Subject',
+        type: 'string',
+      },
+    },
+  };
 }

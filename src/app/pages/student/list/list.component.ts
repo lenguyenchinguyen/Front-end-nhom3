@@ -1,9 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { LocalDataSource } from 'ng2-smart-table';
 
 import { SmartTableData } from '../../../@core/data/smart-table';
 import { NbComponentShape, NbComponentSize, NbComponentStatus } from '@nebular/theme';
+import { StudentService } from 'app/@core/services/apis/student.service';
+import { IStudent } from 'app/@core/interfaces/student.interface';
+import { DeleteComponent } from '../delete/delete.component';
+
 
 
 @Component({
@@ -11,59 +15,34 @@ import { NbComponentShape, NbComponentSize, NbComponentStatus } from '@nebular/t
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
-export class ListComponent {
-  settings = {
-    add: {
-      addButtonContent: '<i class="nb-plus"></i>',
-      createButtonContent: '<i class="nb-checkmark"></i>',
-      cancelButtonContent: '<i class="nb-close"></i>',
-    },
+export class ListComponent implements OnInit {
+  constructor(private student: StudentService , private dele:DeleteComponent){ }
+  List: IStudent;
+  listClass: IStudent;
+  ngOnInit(): void {
+    this.getAll()
+    this.getClass()
+  }
+  getAll(){
+    this.student.getStudent().subscribe(p=>{
+      console.log(p);
+      this.List = p.data
+    })
+  }
 
-    edit: {
-      editButtonContent: '<i class="nb-edit"></i>',
-      saveButtonContent: '<i class="nb-checkmark"></i>',
-      cancelButtonContent: '<i class="nb-close"></i>',
-    },
-    delete: {
-      deleteButtonContent: '<i class="nb-trash"></i>',
-      confirmDelete: true,
-    },
-    columns: {
-      Name: {
-        title: 'Name',
-        type: 'string',
-      },
-      Date_of_birth: {
-        title: 'Date_of_birth',
-        type: 'number',
-      },
-      Adrress: {
-        title: 'Adrress',
-        type: 'string',
-      },
-      email: {
-        title: 'E-mail',
-        type: 'string',
-      },
-      gender: {
-        title: 'Gender',
-        type: 'string',
-      },
-      SDT: {
-        title: 'SDT',
-        type: 'number',
-      },
-      Class: {
-        title: 'Class',
-        type: 'number',
-      },
-    },
-  };
+  deleteStudent(maHS:number){
+    if(confirm('Bạn có chắc chắn mún xóa không')) {
+      this.dele.deleteStudent(maHS)
+    }
+  }
 
-  data = [
-    { id: 1,Name: 'Võ Hiền Lương',Date_of_birth: 2622004,Adrress: 'Bạc Liêu', email: 'luongvhpc05477@fpt.edu.vn',gender:'Nam',SDT:949338472,Class:10},
-    { id: 2,Name: 'Võ Hiền Lương',Date_of_birth: 2622004,Adrress: 'Bạc Liêu', email: 'luongvhpc05477@fpt.edu.vn',gender: 'Nam',SDT:359235876,Class:10 },
-  ];
+  getClass() {
+    this.student.getClass().subscribe(res => {
+      console.log(res);
+      this.listClass = res.data;
+    })
+  }
+
 
 
   statuses: NbComponentStatus[] = ['info'];

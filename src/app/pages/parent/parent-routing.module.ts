@@ -17,8 +17,12 @@ const routes: Routes = [
           component: AddComponent,
         },
         {
-          path: 'update',
+          path: 'update/:maPH',
           component: UpdateComponent,
+        },
+        {
+          path: 'delete/:maPH',
+          component: ListComponent,
         },
         {
           path: 'list',
