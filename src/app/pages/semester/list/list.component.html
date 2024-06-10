@@ -1,37 +1,45 @@
 <nb-card>
     <nb-card-header>
-        <h5>Danh sách học kì</h5>
+        <h5>List Semestersr</h5>
     </nb-card-header>
 
     <nb-card-body>
-      <a routerLink="/pages/semester/add">
-        <button nbButton status="primary" class="add-button" size="small">
-            <i class="nb-plus"></i> Thêm học kì
-        </button>
-      </a>
+        <a routerLink="/pages/semester/add">
+            <button nbButton status="primary" class="add-button" size="small">
+                Add Semester
+            </button>
+        </a>
         <table class="table">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Học kì</th>
-                    <th>Năm học</th>
-                    <th>Hành động</th>
+                    <th>STT</th>
+                    <th>Semester</th>
+                    <th>School Year</th>
+                    <th>Act</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let semester of data">
-                    <td>{{ semester.id }}</td>
-                    <td>{{ semester.semester }}</td>
-                    <td>{{ semester.schoolyear }}</td>
+                <tr *ngFor="let semester of listSeme; index as i">
+                    <td>{{ i+1 }}</td>
+                    <td>{{ semester.hoc_ki }}</td>
                     <td>
-                        <a routerLink="/pages/semester/update">
+                        <div *ngFor="let y of listYear">
+                            <span *ngIf="semester.maNH == y.maNH">
+                                {{y.nam_hoc}}
+                            </span>
+                        </div>
+                    </td>
+                    <td>
+                        <a routerLink="/pages/semester/update/{{semester.maHK}}">
                             <button nbButton status="success" size="small" class="float-right">
                                 <i class="nb-edit"></i>
                             </button>
                         </a>
-                        <button nbButton status="danger" size="small" class="float-right ml-1 m-lg-2">
-                            <i class="nb-trash"></i>
-                        </button>
+                        <a routerLink="/pages/semester/delete/{{semester.maHK}}">
+                            <button (click)="delete(semester.maHK)" nbButton status="danger" size="small" class="float-right ml-1 m-lg-2">
+                                <i class="nb-trash"></i>
+                            </button>
+                        </a>
                     </td>
                 </tr>
             </tbody>

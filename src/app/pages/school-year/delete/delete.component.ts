@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { SChoolYearService } from 'app/@core/services/apis';
+import { SChoolYearService } from 'app/@core/services/apis/school-year.service';
 
 @Component({
   selector: 'app-delete',

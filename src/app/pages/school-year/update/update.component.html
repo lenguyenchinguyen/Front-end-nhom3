@@ -1,16 +1,23 @@
 <div class="row">
-    <div class="col-lg-12">
-        <nb-card>
-            <nb-card-header><h5>Sửa năm học</h5></nb-card-header>
-            <nb-card-body>
-              <label for=""><strong>Năm học</strong></label>
-              <input type="text" nbInput fullWidth>
-              <button nbButton status="primary" class="add-button" size="small">
-                <i class="nb-edit"></i> Sửa
-            </button>
-            </nb-card-body>
-          </nb-card>
-    </div>
+  <div class="col-lg-12">
+    <nb-card>
+      <nb-card-header>
+        <h5>Edit School Year</h5>
+      </nb-card-header>
+      <nb-card-body [formGroup]="updateForm">
+        <label for=""><strong>School Year</strong></label>
+        <input type="text" nbInput fullWidth formControlName="nam_hoc" [(ngModel)]="listSY.nam_hoc">
+        <div class="text-danger"
+          *ngIf="updateForm.get('nam_hoc')!.invalid && (updateForm.get('nam_hoc')!.dirty || updateForm.get('nam_hoc')!.touched)">
+          Năm học không được bỏ trống !
+        </div>
+        <button (click)="saveUpdateSchoolYear()" nbButton status="primary" class="add-button" size="small">
+          Edit
+        </button>
+        <button (click)="cancle()" nbButton status="danger" class="cancle-button" size="small">
+          Cancle
+        </button>
+      </nb-card-body>
+    </nb-card>
+  </div>
 </div>
-
-

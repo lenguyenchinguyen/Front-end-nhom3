@@ -1,59 +1,42 @@
-import { Component } from '@angular/core';
-import { LocalDataSource } from 'ng2-smart-table';
+import { Component, OnInit } from '@angular/core';
 
-import { SmartTableData } from '../../../@core/data/smart-table';
+import { SemesterService } from 'app/@core/services/apis/semester.service';
+import { Router } from '@angular/router';
+import { ISemester } from 'app/@core/interfaces/semester.interface';
+import { ISchoolYear } from 'app/@core/interfaces/school-year.interface';
+import { SChoolYearService } from 'app/@core/services/apis/school-year.service';
+import { DeleteComponent } from 'app/pages/semester/delete/delete.component';
 
 @Component({
   selector: 'ngx-smart-table',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
 })
-export class ListComponent {
+export class ListComponent implements OnInit{
+  listSeme: ISemester;
+  listYear: ISchoolYear
+  constructor(private semester: SemesterService,private year: SChoolYearService, private router: Router, private del: DeleteComponent){}
 
-  settings = {
-    add: {
-      addButtonContent: '<i class="nb-plus"></i>',
-      createButtonContent: '<i class="nb-checkmark"></i>',
-      cancelButtonContent: '<i class="nb-close"></i>',
-    },
-    edit: {
-      editButtonContent: '<i class="nb-edit"></i>',
-      saveButtonContent: '<i class="nb-checkmark"></i>',
-      cancelButtonContent: '<i class="nb-close"></i>',
-    },
-    delete: {
-      deleteButtonContent: '<i class="nb-trash"></i>',
-      confirmDelete: true,
-    },
-    columns: {
-      id: {
-        title: 'ID',
-        type: 'number',
-      },
-      firstName: {
-        title: 'First Name',
-        type: 'string',
-      },
-      lastName: {
-        title: 'Last Name',
-        type: 'string',
-      },
-      username: {
-        title: 'Username',
-        type: 'string',
-      },
-      email: {
-        title: 'E-mail',
-        type: 'string',
-      },
-      age: {
-        title: 'Age',
-        type: 'number',
-      },
-    },
-  };
-  data = [
-    { id: 1, semester: 'Hk1', schoolyear: '2023-2024'},
-    { id: 2, semester: 'Hk2', schoolyear: '2024-2025'},
-  ];
+  ngOnInit(): void {
+    this.getAllSemester();
+    this.getYear();
+  }
+
+  getAllSemester(){
+    this.semester.getSemester().subscribe(res => {
+      this.listSeme = res.data;
+    })
+  }
+
+  getYear(){
+    this.year.getSchoolYear().subscribe(res => {
+      this.listYear = res.data;
+    })
+  }
+
+  delete(maHK: number){
+    if (confirm('Bạn có chắc chắn muốn xóa !')) {
+      this.del.deleteSemester(maHK)
+    }
+  }
 }

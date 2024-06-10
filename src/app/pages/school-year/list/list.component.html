@@ -1,35 +1,38 @@
 <nb-card>
     <nb-card-header>
-        <h5>Danh sách năm học</h5>
+        <h5>List School Year</h5>
     </nb-card-header>
 
     <nb-card-body>
-      <a routerLink="/pages/school-year/add">
-        <button nbButton status="primary" class="add-button" size="small">
-            <i class="nb-plus"></i> Thêm năm học
-        </button>
-      </a>
+        <a routerLink="/pages/school-year/add">
+            <button nbButton status="primary" class="add-button" size="small">
+                Add School Year
+            </button>
+        </a>
         <table class="table">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Năm học</th>
-                    <th>Hành động</th>
+                    <th>STT</th>
+                    <th>School Year</th>
+                    <th>Act</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let year of data">
-                    <td>{{ year.id }}</td>
-                    <td>{{ year.schoolyear}}</td>
+                <tr *ngFor="let year of listSY; index as i">
+                    <td>{{ i+1 }}</td>
+                    <td>{{ year.nam_hoc}}</td>
                     <td>
-                        <a routerLink="/pages/school-year/update">
+                        <a routerLink="/pages/school-year/update/{{year.maNH}}">
                             <button nbButton status="success" size="small" class="float-right">
                                 <i class="nb-edit"></i>
                             </button>
                         </a>
-                        <button nbButton status="danger" size="small" class="float-right ml-1 m-lg-2">
-                            <i class="nb-trash"></i>
-                        </button>
+
+                        <a routerLink="/pages/school-year/delete/{{year.maNH}}">
+                            <button (click)="delete(year.maNH)" nbButton status="danger" size="small" class="float-right ml-1 m-lg-2">
+                                <i class="nb-trash"></i>
+                            </button>
+                        </a>
                     </td>
                 </tr>
             </tbody>
