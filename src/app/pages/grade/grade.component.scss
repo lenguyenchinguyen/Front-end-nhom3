@@ -1,0 +1,25 @@
+.container{
+    font-size: 18px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.buttons-row {
+    margin: -0.5rem;
+  }
+
+  button[nbButton] {
+    width: 15rem;
+    height: 4rem;
+    margin: 0.5rem;
+  }
+
+th{
+    border:1px solid black;
+    height: 3rem;
+}
+td{
+    border:1px solid black;
+    height: 3rem;
+}
+table{
+    border: 1 gray solid
+}

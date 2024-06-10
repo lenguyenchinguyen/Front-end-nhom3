@@ -6,7 +6,7 @@ import {PagesComponent} from './pages.component';
 import {DashboardModule} from './dashboard/dashboard.module';
 import {PagesRoutingModule} from './pages-routing.module';
 import {PaginatorModule} from "../@theme/components/paginator/paginator.module";
-import { GradeComponent } from './grade/grade.component';
+import {GradeComponent } from './grade/grade.component';
 
 
 
@@ -16,7 +16,7 @@ import { GradeComponent } from './grade/grade.component';
     ThemeModule,
     DashboardModule,
     NbMenuModule,
-    PaginatorModule
+    PaginatorModule,
   ],
   declarations: [
     PagesComponent,

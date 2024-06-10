@@ -60,8 +60,8 @@ const routes: Routes = [{
       .then(m => m.BdModule),
     },
     {
-      path: 'classlist',
-      loadChildren: () => import('./classlist/dslop.module')
+      path: 'dslop',
+      loadChildren: () => import('./dslop/dslop.module')
       .then(m => m.DslopModule),
     },
     {

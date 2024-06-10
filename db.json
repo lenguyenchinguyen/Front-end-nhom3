@@ -1,0 +1,40 @@
+{
+  "teachers": [
+    {
+      "id": "1",
+      "name": "John Doe",
+      "gender": "male",
+      "dateOfBirth": "1985-07-15",
+      "class": "Grade 5",
+      "address": "123 Main St, Anytown USA",
+      "phone": "555-1234",
+      "educationLevel": "Bachelor's Degree",
+      "subject": "Mathematics"
+    },
+    {
+      "id": "2",
+      "name": "Jane Smith",
+      "gender": "female",
+      "dateOfBirth": "1990-03-20",
+      "class": "Grade 7",
+      "address": "456 Oak Rd, Anytown USA",
+      "phone": "555-5678",
+      "educationLevel": "Master's Degree",
+      "subject": "English Literature"
+    },
+    {
+      "id": "0df7"
+    },
+    {
+      "id": "4075",
+      "name": "aidubsi",
+      "gender": "female",
+      "dateOfBirth": "2024-05-23",
+      "class": "11",
+      "address": "aiv",
+      "phone": 324499109,
+      "educationLevel": "aidsv",
+      "subject": "aidvisdv"
+    }
+  ]
+}
