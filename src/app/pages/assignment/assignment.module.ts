@@ -21,10 +21,12 @@ import { FormsModule as ngFormsModule } from '@angular/forms';
 import { AddComponent } from './add/add.component';
 import { UpdateComponent } from './update/update.component';
 import { ListComponent } from './list/list.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   imports: [
+    ReactiveFormsModule,
     Ng2SmartTableModule,
     ThemeModule,
     NbInputModule,

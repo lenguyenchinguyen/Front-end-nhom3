@@ -1,12 +1,15 @@
 <nb-card>
   <nb-card-header>
     <h5>List Teacher</h5>
+    <div class="card-body mt-2">
+      <input type="text" class="col-3 form-control" [(ngModel)]="listFilter" placeholder="Search teachers" />
+    </div>
   </nb-card-header>
 
   <nb-card-body>
     <a routerLink="/pages/teacher/add">
-      <button nbButton status="primary" class="add-button" size="small">
-        <i class="nb-plus"></i> Add Teacher
+      <button nbButton status="primary" class="add-button"  size="small">
+        Add Teacher
       </button>
     </a>
 
@@ -15,28 +18,30 @@
         <tr>
           <th>Name</th>
           <th>Gender</th>
-          <th>Class</th>
+          <th>Level</th>
+          <th>Email</th>
           <th>Phone</th>
-          <th>Subject</th>
           <th>Action</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let teacher of teachers">
-          <td>{{ teacher.name }}</td>
-          <td>{{ teacher.gender }}</td>
-          <td>{{ teacher.class }}</td>
-          <td>{{ teacher.phone }}</td>
-          <td>{{ teacher.subject }}</td>
+          <td>{{ teacher.ten_GV }}</td>
+          <td>{{ teacher.gioi_tinh }}</td>
+          <td>{{ teacher.trinh_do }}</td>
+          <td>{{ teacher.email }}</td>
+          <td>{{ teacher.dien_thoai }}</td>
           <td>
-            <a routerLink="/pages/teacher/update">
+            <a routerLink="/pages/teacher/update/{{teacher.maGV}}">
               <button nbButton status="success" size="medium" class="float-right">
                 <i class="nb-edit"></i>
               </button>
             </a>
-            <button nbButton status="danger" size="medium" class="float-right ml-1 m-lg-2" (click)="delete(teacher.id)">
+            <a routerLink="/pages/teacher/delete/{{teacher.maGV}}">
+            <button  nbButton status="danger" size="medium" class="float-right ml-1 m-lg-2"  (click)="delete(teacher.maGV)">
               <i class="nb-trash"></i>
             </button>
+            </a>
           </td>
         </tr>
       </tbody>

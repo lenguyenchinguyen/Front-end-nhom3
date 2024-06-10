@@ -15,9 +15,10 @@ import {
 import { ThemeModule } from '../../@theme/theme.module';
 import { SubjectComponent } from './subject.component';
 import { SubjectRoutingModule } from './subject-routing.module';
-import { FormsModule as ngFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListComponent } from './list/list.component';
 import { AddComponent } from './add/add.component';
+
 
 @NgModule({
   imports: [
@@ -33,13 +34,14 @@ import { AddComponent } from './add/add.component';
     SubjectRoutingModule,
     NbSelectModule,
     NbIconModule,
-    ngFormsModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     SubjectComponent,
     ListComponent,
     AddComponent,
-    
+
   ],
 })
 export class SubjectModule { }

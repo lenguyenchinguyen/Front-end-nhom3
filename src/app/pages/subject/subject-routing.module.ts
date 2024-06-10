@@ -6,6 +6,7 @@ import { AddComponent } from './add/add.component';
 import { SubjectComponent } from './subject.component';
 
 
+
 const routes: Routes = [
     {
       path: '',
@@ -15,12 +16,13 @@ const routes: Routes = [
           path: 'add',
           component: AddComponent,
         },
-    //     {
-    //       path: 'update',
-    //       component: UpdateComponent,
-    //     },
+
         {
           path: 'list',
+          component: ListComponent,
+        },
+        {
+          path: 'delete/:maMon',
           component: ListComponent,
         }
       ],
