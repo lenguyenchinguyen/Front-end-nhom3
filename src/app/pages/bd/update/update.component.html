@@ -1,0 +1,77 @@
+<div class="row">
+    <div class="col-lg-12">
+        <nb-card>
+            <nb-card-header>
+                <h5>Edit Point</h5>
+            </nb-card-header>
+            <nb-card-body [formGroup]="updateForm" >
+                <div class="row">
+                    <div class="col-6">
+                        <label for=""><strong>Student</strong></label>
+                        <div class="full-name-inputs">
+                            <nb-select fullWidth [selected]="'Năm học'" formControlName="maHS" [(ngModel)]="ListById.maHS">
+                                <nb-option *ngFor="let stu of student" [value]="stu.maHS">
+                                    {{stu.ho_ten}}
+                                </nb-option>
+                            </nb-select>
+                        </div>
+                        <div class="text-danger"
+                            *ngIf="updateForm.get('maHS')!.invalid && (updateForm.get('maHS')!.dirty || updateForm.get('maHS')!.touched)">
+                            Vui lòng chọn học sinh !
+                        </div>
+                        <label for=""><strong>Subject</strong></label>
+                        <div class="full-name-inputs">
+                            <nb-select fullWidth [selected]="'Năm học'" formControlName="maMon"  [(ngModel)]="ListById.maMon">
+                                <nb-option *ngFor="let sub of subject" [value]="sub.maMon">
+                                    {{sub.ten_mon}}
+                                </nb-option>
+                            </nb-select>
+                        </div>
+                        <div class="text-danger"
+                            *ngIf="updateForm.get('maMon')!.invalid && (updateForm.get('maMon')!.dirty || updateForm.get('maMon')!.touched)">
+                            Vui lòng chọn môn học !
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <label for=""><strong>School Year</strong></label>
+                        <div class="full-name-inputs">
+                            <nb-select fullWidth [selected]="'Năm học'" formControlName="maNH"  [(ngModel)]="ListById.maNH">
+                                <nb-option *ngFor="let y of year" [value]="y.maNH">
+                                    {{y.nam_hoc}}
+                                </nb-option>
+                            </nb-select>
+                        </div>
+                        <div class="text-danger"
+                            *ngIf="updateForm.get('maNH')!.invalid && (updateForm.get('maNH')!.dirty || updateForm.get('maNH')!.touched)">
+                            Vui lòng chọn năm học !
+                        </div>
+                        <label for=""><strong>Semester</strong></label>
+                        <div class="full-name-inputs">
+                            <nb-select fullWidth [selected]="'Năm học'" formControlName="maHK"  [(ngModel)]="ListById.maHK">
+                                <nb-option *ngFor="let seme of semester" [value]="seme.maHK">
+                                    {{seme.hoc_ki}}
+                                </nb-option>
+                            </nb-select>
+                        </div>
+                        <div class="text-danger"
+                            *ngIf="updateForm.get('maHK')!.invalid && (updateForm.get('maHK')!.dirty || updateForm.get('maHK')!.touched)">
+                            Vui lòng chọn học kì !
+                        </div>
+                    </div>
+                </div>
+                <label for=""><strong>Point</strong></label>
+                <input *ngIf="ListById" type="text" name="diem" id="diem" nbInput fullWidth placeholder="Nhập điểm" formControlName="diem" [(ngModel)]="ListById.diem">
+                <div class="text-danger"
+                            *ngIf="updateForm.get('diem')!.invalid && (updateForm.get('diem')!.dirty || updateForm.get('diem')!.touched)">
+                            Vui lòng chọn học kì !
+                        </div>
+                <button (click)="saveUpdateTranscript()" nbButton status="primary" class="add-button" size="small">
+                    <i class="nb-plus"></i>Edit
+                </button>
+                <button (click)="cancle()" nbButton status="danger" class="cancle-button" size="small">
+                    Cancle
+                </button>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>
