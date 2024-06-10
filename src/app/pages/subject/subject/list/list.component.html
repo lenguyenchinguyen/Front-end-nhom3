@@ -1,0 +1,32 @@
+<nb-card>
+    <nb-card-header>
+        Bảng danh sách môn học
+    </nb-card-header>
+  
+    <nb-card-body>
+        
+        <button class="btn btn-primary mb-2" [routerLink]="'/pages/subject/add'">Thêm mới</button>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Môn học</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let subject of LitsSub; index as i">
+                    <td>{{ i+1 }}</td>
+                    <td>{{ subject.ten_mon }}</td>
+                    <td>
+                       
+                          <button nbButton status="danger" size="small" class="float-right ml-1" (click)="deleteSubject(subject.maMon)">
+                            <i class="nb-trash" ></i> Xóa
+                          </button>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+    </nb-card-body>
+  </nb-card>

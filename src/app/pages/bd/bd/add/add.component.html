@@ -1,0 +1,74 @@
+<div class="row">
+    <div class="col-lg-12">
+        <nb-card>
+            <nb-card-header>
+                <h5>Nhập điểm</h5>
+            </nb-card-header>
+            <nb-card-body [formGroup]="addForm">
+                <div class="row">
+                    <div class="col-6">
+                        <label for=""><strong>Học sinh</strong></label>
+                        <div class="full-name-inputs">
+                            <nb-select fullWidth [selected]="'Năm học'" formControlName="maHS">
+                                <nb-option *ngFor="let stu of student" [value]="stu.maHS">
+                                    {{stu.ho_ten}}
+                                </nb-option>
+                            </nb-select>
+                        </div>
+                        <div class="text-danger"
+                            *ngIf="addForm.get('maHS')!.invalid && (addForm.get('maHS')!.dirty || addForm.get('maHS')!.touched)">
+                            Vui lòng chọn học sinh !
+                        </div>
+                        <label for=""><strong>Môn học</strong></label>
+                        <div class="full-name-inputs">
+                            <nb-select fullWidth [selected]="'Năm học'" formControlName="maMon">
+                                <nb-option *ngFor="let sub of subject" [value]="sub.maMon">
+                                    {{sub.ten_mon}}
+                                </nb-option>
+                            </nb-select>
+                        </div>
+                        <div class="text-danger"
+                            *ngIf="addForm.get('maMon')!.invalid && (addForm.get('maMon')!.dirty || addForm.get('maMon')!.touched)">
+                            Vui lòng chọn môn học !
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <label for=""><strong>Năm học</strong></label>
+                        <div class="full-name-inputs">
+                            <nb-select fullWidth [selected]="'Năm học'" formControlName="maNH">
+                                <nb-option *ngFor="let y of year" [value]="y.maNH">
+                                    {{y.nam_hoc}}
+                                </nb-option>
+                            </nb-select>
+                        </div>
+                        <div class="text-danger"
+                            *ngIf="addForm.get('maNH')!.invalid && (addForm.get('maNH')!.dirty || addForm.get('maNH')!.touched)">
+                            Vui lòng chọn năm học !
+                        </div>
+                        <label for=""><strong>Học kì</strong></label>
+                        <div class="full-name-inputs">
+                            <nb-select fullWidth [selected]="'Năm học'" formControlName="maHK">
+                                <nb-option *ngFor="let seme of semester" [value]="seme.maHK">
+                                    {{seme.hoc_ki}}
+                                </nb-option>
+                            </nb-select>
+                        </div>
+                        <div class="text-danger"
+                            *ngIf="addForm.get('maHK')!.invalid && (addForm.get('maHK')!.dirty || addForm.get('maHK')!.touched)">
+                            Vui lòng chọn học kì !
+                        </div>
+                    </div>
+                </div>
+                <label for=""><strong>Điểm</strong></label>
+                <input type="text" name="diem" id="diem" nbInput fullWidth placeholder="Nhập điểm" formControlName="diem">
+                <div class="text-danger"
+                            *ngIf="addForm.get('diem')!.invalid && (addForm.get('diem')!.dirty || addForm.get('diem')!.touched)">
+                            Vui lòng chọn học kì !
+                        </div>
+                <button (click)="addTranscript()" nbButton status="primary" class="add-button" size="small">
+                    <i class="nb-plus"></i> Thêm
+                </button>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>
