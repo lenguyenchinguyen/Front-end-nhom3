@@ -1,49 +1,55 @@
 <nb-card>
   <nb-card-header>
-    <h5>List Student </h5>
+    <h3 class="text-center">List Student </h3>
   </nb-card-header>
-
   <nb-card-body>
     <a routerLink="/pages/student/add">
-      <button nbButton status="primary" class="add-button" size="small">
-        <i class="nb-plus"></i> Add Student
-      </button>
+      <button nbButton status="primary" class="add-button" size="small">Add Student</button>
     </a>
 
     <table class="table">
       <thead>
       <tr>
-        <th>ID</th>
+        <th>STT</th>
         <th>Name</th>
+        <th>gender</th>
         <th>Date_of_birth</th>
         <th>Adrress</th>
         <th>email</th>
-        <th>gender</th>
-        <th>SDT</th>
         <th>Class</th>
         <th>Actions</th>
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let student of data">
-        <td>{{ student.id }}</td>
-        <td>{{ student.Name}}</td>
-        <td>{{ student.Date_of_birth}}</td>
-        <td>{{ student.Adrress}}</td>
+      <tr *ngFor="let student of List; index as i">
+        <td>{{ i+1 }}</td>
+        <td>{{ student.ho_ten}}</td>
+        <td>{{ student.gioi_tinh}}</td>
+        <td>{{ student.ngay_sinh}}</td>
+        <td>{{ student.dia_chi}}</td>
         <td>{{ student.email}}</td>
-        <td>{{ student.gender}}</td>
-        <td>{{ student.SDT}}</td>
-        <td>{{ student.Class}}</td>
 
         <td>
-          <a routerLink="/pages/student/update">
+          <div *ngFor="let class of listClass">
+            <span *ngIf="student.maLop == class.maLop">
+              {{class.ten_lop}}
+            </span>
+          </div>
+        </td>
+
+
+        <td>
+          <a routerLink="/pages/student/update/{{student.maHS}}">
             <button nbButton status="success" size="medium" class="float-right">
-              <i class="nb-edit"></i>
+              <i class="nb-edit" [nbIcon]="editIconConfig" [iconSize]="'large'"></i>
             </button>
           </a>
-          <button nbButton status="danger" size="medium" class="float-right ml-1 m-lg-2">
-            <i class="nb-trash"></i>
-          </button>
+        
+          <a routerLink="/pages/student/delete/{{student.maHS}}">
+            <button (click)="deleteStudent(student.maHS)" nbButton status="danger" size="medium" class="float-right ml-1 m-lg-2">
+              <i class="nb-trash" [nbIcon]="trashIconConfig" [iconSize]="'large'"></i>
+            </button>
+          </a>
         </td>
       </tr>
       </tbody>

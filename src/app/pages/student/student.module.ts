@@ -20,6 +20,8 @@ import { AddComponent } from './add/add.component';
 import { FormsModule as ngFormsModule } from '@angular/forms';
 import { UpdateComponent } from './update/update.component';
 import { ListComponent } from './list/list.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { DeleteComponent } from './delete/delete.component';
 
 
 @NgModule({
@@ -38,12 +40,17 @@ import { ListComponent } from './list/list.component';
     NbSelectModule,
     NbIconModule,
     ngFormsModule,
+    ReactiveFormsModule,
   ],
   declarations: [
     StudentComponent,
     AddComponent,
     UpdateComponent,
     ListComponent,
+    DeleteComponent,
   ],
+  providers : [
+    DeleteComponent
+  ]
 })
 export class StudentModule { }

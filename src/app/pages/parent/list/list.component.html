@@ -1,20 +1,20 @@
 <nb-card>
   <nb-card-header>
-    <h5>List Parent </h5>
+    <h3 class="text-center">List Parent </h3>
   </nb-card-header>
 
   <nb-card-body>
     <a routerLink="/pages/parent/add">
-      <button nbButton status="primary" class="add-button" size="small">
-        <i class="nb-plus"></i> Add Parent
-      </button>
+      <button nbButton status="primary" class="add-button" size="small"> Add Parent </button>
     </a>
 
     <table class="table">
       <thead>
       <tr>
-        <th>ID</th>
-        <th>Name</th>
+        <th>STT</th>
+        <th>Name PH</th>
+        <th>Name HS</th>
+
         <th>Date_of_birth</th>
         <th>Adrress</th>
         <th>email</th>
@@ -24,23 +24,36 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let parent of data">
-        <td>{{ parent.id }}</td>
-        <td>{{ parent.Name}}</td>
-        <td>{{ parent.Date_of_birth}}</td>
-        <td>{{ parent.Adrress}}</td>
-        <td>{{ parent.email}}</td>
-        <td>{{ parent.gender}}</td>
-        <td>{{ parent.SDT}}</td>
+      <tr *ngFor="let parent of List; index as i">
+        <td>{{ i+1 }}</td>
+        <td>{{ parent.ho_ten}}</td>
         <td>
-          <a routerLink="/pages/parent/update">
+          <div *ngFor="let student of listStudent">
+            <span *ngIf="parent.maHS == student.maHS">
+                {{student.ho_ten}}
+            </span>
+          </div>
+        </td>
+        
+        <td>{{ parent.ngay_sinh}}</td>
+        <td>{{ parent.dia_chi}}</td>
+        <td>{{ parent.email}}</td>
+        <td>{{ parent.gioi_tinh}}</td>
+        <td>{{ parent.dien_thoai}}</td>
+        
+        <td>
+          <a routerLink="/pages/parent/update/{{parent.maPH}}">
             <button nbButton status="success" size="medium" class="float-right">
               <i class="nb-edit"></i>
             </button>
           </a>
-          <button nbButton status="danger" size="medium" class="float-right ml-1 m-lg-2">
-            <i class="nb-trash"></i>
-          </button>
+
+          <a routerLink="/pages/parent/delete/{{parent.maPH}}">
+            <button (click)="deleteParent(parent.maPH)" nbButton status="danger" size="medium" class="float-right ml-1 m-lg-2">
+              <i class="nb-trash"></i>
+            </button>
+          </a>
+          
         </td>
       </tr>
       </tbody>

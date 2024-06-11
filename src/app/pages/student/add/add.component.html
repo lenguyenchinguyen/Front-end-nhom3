@@ -1,45 +1,98 @@
-<h3 class="text-center">Add Student</h3>
-<div class="container">
-  <div class="row">
-    <div class="col-lg-6">
-      <nb-card>
-        <nb-card-body>
-          <label for="name">Name</label>
-          <input type="text" id="name"  nbInput fullWidth placeholder="name" />
-          <label for="gender">Gender</label>
-          <select class="form-select" aria-label="Default select example">
-            <option selected>Gender</option>
-            <option value="nam">Nam</option>
-            <option value="nu">Nữ</option>
-          </select>
-          <label for="date_of_birth">Date_of_birth</label>
-          <input type="date" name="date_of_birth" nbInput fullWidth placeholder="Ngày sinh" />
-          <label for="class">Class</label>
-          <input type="text" name="class" id="class" nbInput fullWidth placeholder="Class" />
-         
-        </nb-card-body>
-      </nb-card>
-    </div>
-    <div class="col-lg-6">
-      <nb-card>
-        <nb-card-body>
-          <label for="Email">Email</label>
-          <input type="email" name="Email" id="Email" nbInput fullWidth placeholder="email" />
-          <label for="Password">Password</label>
-          <input type="password" name="Password" id="Password" nbInput fullWidth placeholder="Password" />
-          <label for="phone">SĐT</label>
-          <input type="number" name="phone" id="phone" nbInput fullWidth placeholder="phone" />
-          <label for="address">Address</label>
-          <input type="text" name="address" id="address" nbInput fullWidth placeholder="Address" />
-        </nb-card-body>
-      </nb-card>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-lg-12">
-      <button *ngFor="let status of statuses" nbButton [status]="status" class="btn btn-primary float-start">
-      ADD
-      </button>
-    </div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <nb-card>
+      <nb-card-header>
+        <h3 class="text-center">Add Student</h3>
+      </nb-card-header>
+      <nb-card-body>
+        <form (ngSubmit)="addStudent()" [formGroup]="addForm">
+          <div class="row mt-3">
+            <div class="col-lg-6">
+              <div class="form-group mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" id="ho_ten" name="ho_ten" class="form-control" nbInput fullWidth placeholder="Name"
+                  formControlName="ho_ten"  />
+                <span class="text-danger"
+                *ngIf="addForm.get('ho_ten')!.invalid && (addForm.get('ho_ten')!.dirty || addForm.get('ho_ten')!.touched)">
+              Name không hợp lệ !
+            </span>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group mb-3">
+                <label for="gender">Gender</label>
+                <select class="form-select" id="gioi_tinh" name="gioi_tinh" aria-label="Default select example"  formControlName="gioi_tinh" >
+                  <option selected disabled>Gender</option>
+                  <option value="nam">Nam</option>
+                  <option value="nu">Nữ</option>
+                </select>
+                <span class="text-danger"
+                *ngIf="addForm.get('gioi_tinh')!.invalid && (addForm.get('gioi_tinh')!.dirty || addForm.get('gioi_tinh')!.touched)">
+              Gender không hợp lệ !
+            </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-lg-6">
+              <div class="form-group mb-3">
+                <label for="date_of_birth">Date of Birth</label>
+                <input type="date" id="ngay_sinh" name="ngay_sinh" nbInput fullWidth placeholder="Ngày sinh" formControlName="ngay_sinh"/>
+                <span class="text-danger"
+                *ngIf="addForm.get('ngay_sinh')!.invalid && (addForm.get('ngay_sinh')!.dirty || addForm.get('ngay_sinh')!.touched)">
+                Date of Birth không hợp lệ !
+            </span>
+              </div>
+              <div class="form-group mb-3">
+                <label for="class">Class</label>
+                <!-- <input type="text" name="maLop" id="maLop" nbInput fullWidth placeholder="Class" formControlName="maLop"/> -->
+                 <nb-select   fullWidth [selected]="'Năm học'" formControlName="maLop">
+                  <nb-option *ngFor="let class of listClass" [value]="class.maLop">
+                    {{class.ten_lop}}
+                  </nb-option> 
+               </nb-select> 
+                <span class="text-danger"
+                *ngIf="addForm.get('maLop')!.invalid && (addForm.get('maLop')!.dirty || addForm.get('maLop')!.touched)">
+                Class không hợp lệ !
+            </span>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group mb-3">
+                <label for="Email">Email</label>
+                <input type="email" pattern=[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$ name="email" id="email" nbInput fullWidth placeholder="Email" formControlName="email"/>
+                <span class="text-danger"
+                *ngIf="addForm.get('email')!.invalid && (addForm.get('email')!.dirty || addForm.get('email')!.touched)">
+                Email không hợp lệ !
+            </span>
+              </div>
+              <div class="form-group mb-3">
+                <label for="address">Address</label>
+                <input type="text" name="dia_chi" id="dia_chi" nbInput fullWidth placeholder="Address" formControlName="dia_chi"/>
+                <span class="text-danger"
+                *ngIf="addForm.get('dia_chi')!.invalid && (addForm.get('dia_chi')!.dirty || addForm.get('dia_chi')!.touched)">
+                Address không hợp lệ !
+            </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-lg-6">
+              <button  type="submit" nbButton status="primary" class="btn btn-primary" >
+                Add
+              </button>
+
+              <button routerLink="/pages/student/list"  type="submit" nbButton status="danger" class="btn btn-primary" style="margin-left: 10px;">
+                Back
+              </button>
+            </div>
+
+          </div>
+        </form>
+      </nb-card-body>
+    </nb-card>
   </div>
 </div>

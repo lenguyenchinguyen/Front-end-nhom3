@@ -22,7 +22,7 @@ export class UpdateComponent implements OnInit {
   constructor(
     private classes: ClassService,
     private blocks: BlocksService,
-    private router: Router, 
+    private router: Router,
     private route: ActivatedRoute
   ){}
 
@@ -44,7 +44,7 @@ export class UpdateComponent implements OnInit {
       this.classes.updateClass(id, this.updateForm.value).subscribe(p=>{
         console.log(p);
         alert('Update success')
-        this.router.navigate(['/pages/classlist/list']);
+        this.router.navigate(['/pages/dslop/list']);
       })
       console.log(this.updateForm.value);
     }
@@ -54,6 +54,8 @@ export class UpdateComponent implements OnInit {
     let id =+ this.route.snapshot.params['id'];
     this.classes.getClassById(id).subscribe(res=>{
       this.oneClass = res.data 
+      console.log(this.oneClass);
+      this.oneClass = res.data
       console.log(this.oneClass);
     })
   }

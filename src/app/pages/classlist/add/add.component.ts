@@ -39,7 +39,7 @@ export class AddComponent implements OnInit {
       this.classes.postClass(this.creatForm.value).subscribe(p=>{
         console.log(p);
         alert('Add success')
-        this.router.navigate(['/pages/classlist/list']);
+        this.router.navigate(['/pages/dslop/list']);
       })
       console.log(this.creatForm.value);
     }

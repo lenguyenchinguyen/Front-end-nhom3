@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 export interface Iblocks {
-    maKhoi: number,
-    ten_khoi: string
+  maKhoi: number,
+  ten_khoi: string
 }
 
 @Injectable({
@@ -13,7 +13,7 @@ export interface Iblocks {
 export class BlocksService {
   constructor(private http: HttpClient) {}
 
-  API_URL = `http://127.0.0.1:4500/api/blocks/`;
+  API_URL = `http://127.0.0.1:3300/api/blocks/`;
 
   getAllBlocks(): Observable<any> {
     return this.http.get(this.API_URL)

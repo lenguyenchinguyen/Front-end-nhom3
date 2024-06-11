@@ -1,56 +1,95 @@
-<h3 class="text-center">Update Teaching Assignment</h3>
-<div class="container">
-  <div class="row">
-    <div class="col-lg-6">
-      <nb-card>
-        <nb-card-body>
-          <label for="teacher">Teacher</label>
-          <select class="form-select" aria-label="Default select example">
-            <option selected>Select teacher</option>
-            <option value="teacher">Minh Nhi</option>
-            <option value="teacher">Minh Hieu</option>
-          </select>
-          <label for="subject">Subject</label>
-          <select class="form-select" aria-label="Default select example">
-            <option selected>Select subject</option>
-            <option value="subject">Math</option>
-            <option value="subject">Chemistry</option>
-          </select>
-          <label for="subject">Semester</label>
-          <select class="form-select" aria-label="Default select example">
-            <option selected>Select semester</option>
-            <option value="semester">I</option>
-            <option value="semester">II</option>
-          </select>
-        </nb-card-body>
-      </nb-card>
-    </div>
-    <div class="col-lg-6">
-      <nb-card>
-        <nb-card-body>
-          <label for="day">Day</label>
-          <select class="form-select" aria-label="Default select example">
-            <option selected>Select day</option>
-            <option value="day">Monday</option>
-            <option value="day">Tuesday</option>
-          </select>
-          <label for="session">Session</label>
-          <select class="form-select" aria-label="Default select example">
-            <option selected>Select session</option>
-            <option value="morning">Morning</option>
-            <option value="afternoon">Afternoon</option>
-          </select>
-          <label for="periods">Number of periods</label>
-          <input type="number" name="periods" id="periods" class="form-control" placeholder="Number of periods" />
-        </nb-card-body>
-      </nb-card>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-lg-12">
-      <button *ngFor="let status of statuses" nbButton [status]="status" class="float-start">
-        Update
-      </button>
-    </div>
+<div class="row">
+  <div class="col-lg-12">
+    <nb-card>
+      <nb-card-header>
+        <h5>Edit Assignment</h5>
+      </nb-card-header>
+      <nb-card-body>
+        <form [formGroup]="putTeaching" (ngSubmit)="saveTeaching()">
+          <div class="row">
+            <div class="col-lg-6">
+              <label for="teacher">Teacher</label>
+              <select class="form-control" id="teacher" formControlName="maGV">
+                <option *ngFor="let teacher of teachers" [value]="teacher.maGV">
+                  {{ teacher.ten_GV }}
+                </option>
+              </select>
+            </div>
+            <div class="col-lg-6">
+              <label for="subject">Subject</label>
+              <select class="form-control" id="subject" formControlName="maMon">
+                <option *ngFor="let subject of subjects" [value]="subject.maMon">
+                  {{ subject.ten_mon }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-lg-6">
+              <label for="semester">Semester</label>
+              <select class="form-control" id="semester" formControlName="maHK">
+                <option *ngFor="let semester of semesters" [value]="semester.maHK">
+                  {{ semester.hoc_ki }}
+                </option>
+              </select>
+            </div>
+            <div class="col-lg-6">
+              <label for="day">Day</label>
+              <select class="form-control" id="day" formControlName="thu">
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+              </select>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-lg-6">
+              <label for="session">School Years</label>
+              <select class="form-control" id="session" formControlName="maNH">
+                <option *ngFor="let school_year of school_years" [value]="school_year.maNH">
+                  {{ school_year.nam_hoc }}
+                </option>
+              </select>
+            </div>
+            <div class="col-lg-6">
+              <label for="ca_day">teaching shift</label>
+              <input type="number" class="form-control" id="ca_day" formControlName="ca_day"
+                placeholder="Number of periods" />
+              <div class="text-danger" *ngIf="
+                  putTeaching.get('ca_day')?.invalid &&
+                  (putTeaching.get('ca_day')?.dirty ||
+                    putTeaching.get('ca_day')?.touched)
+                ">
+                <span *ngIf="putTeaching.get('ca_day')?.errors?.required">teaching shift không được bỏ trống.</span>
+                <span *ngIf="putTeaching.get('ca_day')?.errors?.min">teaching shift không được nhỏ hơn 0.</span>
+                <span *ngIf="putTeaching.get('ca_day')?.errors?.max">teaching shift không được lớn hơn 5.</span>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-lg-12">
+              <label for="class">Class</label>
+              <select class="form-control" id="class" formControlName="maLop">
+                <option *ngFor="let class of classes" [value]="class.maLop">
+                  {{ class.ten_lop }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="row mb-3 mt-3">
+            <div class="col-xl-12">
+              <button nbButton status="primary" class="btn btn-primary float-start  me-2">
+                Update
+              </button>
+              <a routerLink="/pages/assignment/list">
+                <button nbButton status="secondary" class="btn btn-secondary float-start">Cancel</button>
+              </a>
+            </div>
+          </div>
+        </form>
+      </nb-card-body>
+    </nb-card>
   </div>
 </div>

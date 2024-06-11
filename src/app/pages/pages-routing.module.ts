@@ -4,6 +4,7 @@ import {NgModule} from '@angular/core';
 import {PagesComponent} from './pages.component';
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import { GradeComponent } from './grade/grade.component';
+import {DslopModule} from "./classlist/dslop.module";
 
 const routes: Routes = [{
   path: '',
@@ -60,7 +61,7 @@ const routes: Routes = [{
       .then(m => m.BdModule),
     },
     {
-      path: 'classlist',
+      path: 'dslop',
       loadChildren: () => import('./classlist/dslop.module')
       .then(m => m.DslopModule),
     },

@@ -17,8 +17,8 @@ export const MENU_ITEMS: NbMenuItem[] = [
       {
         title: 'List',
         icon: 'arrow-right',
-        link: '/pages/classlist/list',
-      }
+        link: '/pages/dslop/list',
+      },
     ]
   },
   {
@@ -31,11 +31,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'person-outline',
     children: [
       {
-        title: 'Add',
-        icon: 'arrow-right',
-        link: '/pages/student/add',
-      },
-      {
         title: 'List',
         icon: 'arrow-right',
         link: '/pages/student/list',
@@ -47,11 +42,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'people-outline',
     children: [
       {
-        title: 'Add',
-        icon: 'arrow-right',
-        link: '/pages/parent/add',
-      },
-      {
         title: 'List',
         icon: 'arrow-right',
         link: '/pages/parent/list',
@@ -62,11 +52,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
     title: 'Subjects',
     icon: 'book-outline',
     children: [
-      {
-        title: 'Add',
-        icon: 'arrow-right',
-        link: '/pages/subject/add',
-      },
       {
         title: 'List',
         icon: 'arrow-right',
@@ -90,11 +75,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'more-vertical-outline',
     children: [
       {
-        title: 'Add',
-        icon: 'arrow-right',
-        link: '/pages/school-year/add',
-      },
-      {
         title: 'List',
         icon: 'arrow-right',
         link: '/pages/school-year/list',
@@ -105,11 +85,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
     title: 'Semester',
     icon: 'options-2-outline',
     children: [
-      {
-        title: 'Add',
-        icon: 'arrow-right',
-        link: '/pages/semester/add',
-      },
       {
         title: 'List',
         icon: 'arrow-right',
@@ -122,11 +97,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'person-outline',
     children: [
       {
-        title: 'Add',
-        icon: 'arrow-right',
-        link: '/pages/teacher/add',
-      },
-      {
         title: 'List',
         icon: 'arrow-right',
         link: '/pages/teacher/list',
@@ -137,11 +107,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
     title: 'Teaching Assignment',
     icon: 'briefcase-outline',
     children: [
-      {
-        title: 'Add',
-        icon: 'arrow-right',
-        link: '/pages/assignment/add',
-      },
       {
         title: 'List',
         icon: 'arrow-right',

@@ -11,6 +11,7 @@ import {
   NbSelectModule,
   NbUserModule,
 } from '@nebular/theme';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { ThemeModule } from '../../@theme/theme.module';
 import { SchoolYearRoutingModule } from './school-year-routing.module';
@@ -19,6 +20,7 @@ import { AddComponent } from './add/add.component';
 import { FormsModule as ngFormsModule } from '@angular/forms';
 import { ListComponent } from './list/list.component';
 import { UpdateComponent } from './update/update.component';
+import { DeleteComponent } from './delete/delete.component';
 
 @NgModule({
   imports: [
@@ -36,6 +38,7 @@ import { UpdateComponent } from './update/update.component';
     NbSelectModule,
     NbIconModule,
     ngFormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     SchoolYearComponent,
@@ -43,5 +46,8 @@ import { UpdateComponent } from './update/update.component';
     ListComponent,
     UpdateComponent
   ],
+  providers: [
+    DeleteComponent
+  ]
 })
 export class SchoolYearModule { }

@@ -1,29 +1,38 @@
 <div class="row">
     <div class="col-lg-12">
         <nb-card>
-            <nb-card-header><h5>Thêm học kì</h5></nb-card-header>
-            <nb-card-body>
+            <nb-card-header>
+                <h5>Add Semester</h5>
+            </nb-card-header>
+            <nb-card-body [formGroup]="addForm">
                 <div class="row">
                     <div class="col-6">
-                        <label for=""><strong>Học kì</strong></label>
-                        <input type="text" nbInput fullWidth placeholder="Nhập học kì">
+                        <label for=""><strong>Semester</strong></label>
+                        <input type="text" nbInput fullWidth placeholder="Nhập học kì" formControlName="hoc_ki">
+                        <div class="text-danger"
+                            *ngIf="addForm.get('hoc_ki')!.invalid && (addForm.get('hoc_ki')!.dirty || addForm.get('hoc_ki')!.touched)">
+                            Học kì không được bỏ trống !
+                        </div>
                     </div>
                     <div class="col-6">
-                        <label for=""><strong>Năm học</strong></label>
+                        <label for=""><strong>School Year</strong></label>
                         <div class="full-name-inputs">
-                            <nb-select fullWidth [selected]="'Năm học'">
-                                <nb-option value="Năm học">Năm học</nb-option>
-                                <nb-option *ngFor="let year of data" [value]="year.schoolyear">
-                                  {{ year.schoolyear }}
+                            <nb-select fullWidth [selected]="'Năm học'" formControlName="maNH">
+                                <nb-option *ngFor="let y of listYear" [value]="y.maNH">
+                                    {{y.nam_hoc}}
                                 </nb-option>
-                              </nb-select>
+                            </nb-select>
+                        </div>
+                        <div class="text-danger"
+                            *ngIf="addForm.get('maNH')!.invalid && (addForm.get('maNH')!.dirty || addForm.get('maNH')!.touched)">
+                            Vui lòng chọn năm học !
                         </div>
                     </div>
                 </div>
-                <button nbButton status="primary" class="add-button" size="small">
-                    <i class="nb-plus"></i> Thêm
+                <button (click)="addSemester()" nbButton status="primary" class="add-button" size="small">
+                    Add
                 </button>
-            </nb-card-body>
+                </nb-card-body>
         </nb-card>
     </div>
 </div>

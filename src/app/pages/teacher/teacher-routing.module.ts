@@ -6,6 +6,7 @@ import { UpdateComponent } from './update/update.component';
 import { ListComponent } from './list/list.component';
 import { TeacherComponent } from './teacher.component';
 import { AssignmentComponent } from '../assignment/assignment.component';
+import { DeleteComponent } from './delete/delete.component';
 
 
 const routes: Routes = [
@@ -18,12 +19,16 @@ const routes: Routes = [
           component: AddComponent,
         },
         {
-          path: 'update',
+          path: 'update/:maGV',
           component: UpdateComponent,
         },
         {
           path: 'list',
           component: ListComponent,
+        },
+        {
+          path: 'delete/:maGV',
+          component: DeleteComponent,
         }
       ],
     },

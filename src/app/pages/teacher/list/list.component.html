@@ -1,38 +1,53 @@
-<nb-card-body>
-    <button nbButton status="primary" size="small">
-        <i class="nb-plus"></i> Add Teacher
-    </button>
+<nb-card>
+  <nb-card-header>
+    <h5>List Teacher</h5>
+    <div class="card-body mt-2">
+      <input type="text" class="col-3 form-control" [(ngModel)]="listFilter" placeholder="Search teachers" />
+    </div>
+  </nb-card-header>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Last Name</th>
-                <th>First Name</th>
-                <th>Username</th>
-                <th>Email</th>
-                <th>Age</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let teacher of teachers">
-                <td>{{ teacher.id }}</td>
-                <td>{{ teacher.lastName }}</td>
-                <td>{{ teacher.firstName }}</td>
-                <td>{{ teacher.username }}</td>
-                <td>{{ teacher.email }}</td>
-                <td>{{ teacher.age }}</td>
-                <td>
-                    <a routerLink="/pages/teacher/update"><button nbButton status="success" size="small">
-                        <i class="nb-edit"></i> Edit
-                      </button>
-                    </a>
-                     <button nbButton status="danger" size="small">
-                        <i class="nb-trash"></i> Delete
-                      </button>
-                </td>
-            </tr>
-        </tbody>
+  <nb-card-body>
+    <a routerLink="/pages/teacher/add">
+      <button nbButton status="primary" class="add-button"  size="small">
+        Add Teacher
+      </button>
+    </a>
+
+    <table class="table" *ngIf="teachers?.length > 0">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Gender</th>
+          <th>Level</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let teacher of teachers">
+          <td>{{ teacher.ten_GV }}</td>
+          <td>{{ teacher.gioi_tinh }}</td>
+          <td>{{ teacher.trinh_do }}</td>
+          <td>{{ teacher.email }}</td>
+          <td>{{ teacher.dien_thoai }}</td>
+          <td>
+            <a routerLink="/pages/teacher/update/{{teacher.maGV}}">
+              <button nbButton status="success" size="medium" class="float-right">
+                <i class="nb-edit"></i>
+              </button>
+            </a>
+            <a routerLink="/pages/teacher/delete/{{teacher.maGV}}">
+            <button  nbButton status="danger" size="medium" class="float-right ml-1 m-lg-2"  (click)="delete(teacher.maGV)">
+              <i class="nb-trash"></i>
+            </button>
+            </a>
+          </td>
+        </tr>
+      </tbody>
     </table>
-</nb-card-body>
+    <div *ngIf="teachers?.length === 0">
+      No teachers found.
+    </div>
+  </nb-card-body>
+</nb-card>
