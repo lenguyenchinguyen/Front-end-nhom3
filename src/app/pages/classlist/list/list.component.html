@@ -6,7 +6,7 @@
     <nb-card-body>
       <a routerLink="/pages/dslop/add">
         <button nbButton status="primary" class="add-button" size="small">
-          <i class="nb-plus"></i> Add New Class
+         Add New Class
         </button>
       </a>
       <table class="table" >
@@ -38,17 +38,15 @@
             </div>
           </td>
           <td>
-            <a routerLink="/pages/classlist/update/{{ class.maLop }}">
-              <button nbButton status="success" size="large" class="float-right">
             <a routerLink="/pages/dslop/update/{{ class.maLop }}">
               <button nbButton status="success" size="large" class="float-right">
                 <i class="nb-edit"></i>
               </button>
             </a>
-            <a routerLink="/pages/classlist/delete/{{ class.maLop }}"><button nbButton status="danger" size="large" class="float-right ml-1 m-lg-2">
-            <a routerLink="/pages/dslop/delete/{{ class.maLop }}"><button nbButton status="danger" size="large" class="float-right ml-1 m-lg-2">
-              <i class="nb-trash"></i>
-            </button>
+            <a routerLink="/pages/dslop/delete/{{ class.maLop }}">
+              <button nbButton status="danger" size="large" class="float-right ml-1 m-lg-2">
+                <i class="nb-trash"></i>
+              </button>
             </a>
           </td>
         </tr>
