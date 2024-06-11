@@ -20,7 +20,7 @@ export class AddComponent implements OnInit {
   addSchoolYear(){
     if (this.addForm.valid) {
       this.schoolYear.postSchoolYear(this.addForm.value).subscribe(res => {
-        this.router.navigate(['/pages', 'school-year', 'list'])
+        this.router.navigate(['/pages/school-year/list'])
       })
     }
   }

@@ -63,7 +63,7 @@
               <div class="text-danger"
                 *ngIf="putTeacher.get('dien_thoai')?.invalid && (putTeacher.get('dien_thoai')?.dirty || putTeacher.get('dien_thoai')?.touched)">
                 <span *ngIf="putTeacher.get('dien_thoai')?.errors?.required">Phone không được bỏ trống!</span>
-                <span *ngIf="putTeacher.get('dien_thoai')?.errors?.pattern">Phone phải có đúng 10 chữ số!</span>
+                <span *ngIf="putTeacher.get('dien_thoai')?.errors?.pattern">Phone phải có đúng 11 chữ số!</span>
               </div>
             </div>
           </div>
@@ -72,7 +72,7 @@
             <div class="col-lg-12">
               <button type="submit" nbButton status="success" class="btn btn-success float-start me-2">Update</button>
             <a routerLink="/pages/teacher/list">
-              <button nbButton status="secondary" class="btn btn-secondary float-start">Cancel</button>
+              <button nbButton status="danger" class="btn btn-danger float-start">Cancel</button>
             </a>
           </div>
           </div>

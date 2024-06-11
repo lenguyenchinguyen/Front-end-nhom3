@@ -11,12 +11,12 @@ export class DeleteComponent implements OnInit {
   constructor(private del: SemesterService, private router: Router){}
 
   ngOnInit(): void {
-    
+
   }
 
   deleteSemester(maHK: number){
     this.del.deleteSemester(maHK).subscribe(res => {
-      this.router.navigate(['/pages', 'semester', 'list'])
+      this.router.navigate(['/pages/semester/list'])
     })
   }
 }

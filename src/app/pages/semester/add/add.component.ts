@@ -27,7 +27,7 @@ export class AddComponent implements OnInit{
   addSemester(){
     if (this.addForm.valid) {
       this.semester.postSemester(this.addForm.value).subscribe(res => {
-        this.router.navigate(['/pages', 'semester', 'list'])
+        this.router.navigate(['/pages/semester/list'])
       })
     }
   }
