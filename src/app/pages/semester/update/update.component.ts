@@ -35,13 +35,13 @@ export class UpdateComponent implements OnInit {
   saveUpdateSemester(){
     if (this.updateForm.valid) {
       this.semester.putSemester(this.maHK, this.updateForm.value).subscribe(res => {
-        this.router.navigate(['/pages', 'semester', 'list'])
+        this.router.navigate(['/pages/semester/list'])
       })
     }
   }
 
   cancle(){
-    this.router.navigate(['/pages', 'semester', 'list'])
+    this.router.navigate(['/pages/semester/list'])
   }
 
   getYear() {

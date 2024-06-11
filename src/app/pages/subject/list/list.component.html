@@ -2,9 +2,9 @@
     <nb-card-header>
         Bảng danh sách môn học
     </nb-card-header>
-  
+
     <nb-card-body>
-        
+
         <button class="btn btn-primary mb-2" [routerLink]="'/pages/subject/add'">Thêm mới</button>
         <table class="table">
             <thead>
@@ -19,7 +19,7 @@
                     <td>{{ i+1 }}</td>
                     <td>{{ subject.ten_mon }}</td>
                     <td>
-                       
+
                           <button nbButton status="danger" size="small" class="float-right ml-1" (click)="deleteSubject(subject.maMon)">
                             <i class="nb-trash" ></i>
                           </button>
