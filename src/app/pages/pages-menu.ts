@@ -13,13 +13,14 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Class',
     icon: 'layers-outline',
-    children: [
-      {
-        title: 'List',
-        icon: 'arrow-right',
-        link: '/pages/dslop/list',
-      },
-    ]
+    link: '/pages/dslop/list'
+    // children: [
+    //   {
+    //     title: 'List',
+    //     icon: 'arrow-right',
+    //     link: '/pages/dslop/list',
+    //   },
+    // ]
   },
   {
     title: 'Blocks',
@@ -29,90 +30,98 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Students',
     icon: 'person-outline',
-    children: [
-      {
-        title: 'List',
-        icon: 'arrow-right',
-        link: '/pages/student/list',
-      }
-    ]
+    link: '/pages/student/list',
+    // children: [
+    //   {
+    //     title: 'List',
+    //     icon: 'arrow-right',
+    //     link: '/pages/student/list',
+    //   }
+    // ]
   },
   {
     title: 'Parents',
     icon: 'people-outline',
-    children: [
-      {
-        title: 'List',
-        icon: 'arrow-right',
-        link: '/pages/parent/list',
-      }
-    ]
+    link: '/pages/parent/list'
+    // children: [
+    //   {
+    //     title: 'List',
+    //     icon: 'arrow-right',
+    //     link: '/pages/parent/list',
+    //   }
+    // ]
   },
   {
     title: 'Subjects',
     icon: 'book-outline',
-    children: [
-      {
-        title: 'List',
-        icon: 'arrow-right',
-        link: '/pages/subject/list',
-      },
-    ]
+    link: '/pages/subject/list'
+    // children: [
+    //   {
+    //     title: 'List',
+    //     icon: 'arrow-right',
+    //     link: '/pages/subject/list',
+    //   },
+    // ]
   },
   {
     title: 'Transcripts',
     icon: 'calendar-outline',
-    children: [
-      {
-        title: 'List',
-        icon: 'arrow-right',
-        link: '/pages/bd/list',
-      },
-    ]
+    link: '/pages/bd/list'
+    // children: [
+    //   {
+    //     title: 'List',
+    //     icon: 'arrow-right',
+    //     link: '/pages/bd/list',
+    //   },
+    // ]
   },
   {
     title: 'School Year',
     icon: 'more-vertical-outline',
-    children: [
-      {
-        title: 'List',
-        icon: 'arrow-right',
-        link: '/pages/school-year/list',
-      },
-    ]
+    link: '/pages/school-year/list'
+    // children: [
+    //   {
+    //     title: 'List',
+    //     icon: 'arrow-right',
+    //     link: '/pages/school-year/list',
+    //   },
+    // ]
   },
   {
     title: 'Semester',
     icon: 'options-2-outline',
-    children: [
-      {
-        title: 'List',
-        icon: 'arrow-right',
-        link: '/pages/semester/list',
-      },
-    ]
+    link: '/pages/semester/list'
+    // children: [
+    //   {
+    //     title: 'List',
+    //     icon: 'arrow-right',
+    //     link: '/pages/semester/list',
+    //   },
+    // ]
   },
   {
     title: 'Teachers',
     icon: 'person-outline',
-    children: [
-      {
-        title: 'List',
-        icon: 'arrow-right',
-        link: '/pages/teacher/list',
-      }
-    ]
+    link: '/pages/teacher/list'
+    // children: [
+    //   {
+    //     title: 'List',
+    //     icon: 'arrow-right',
+    //     link: '/pages/teacher/list',
+    //   }
+    // ]
   },
   {
     title: 'Teaching Assignment',
     icon: 'briefcase-outline',
-    children: [
-      {
-        title: 'List',
-        icon: 'arrow-right',
-        link: '/pages/assignment/list',
-      }
-    ]
+    link: '/pages/assignment/list'
+    // children: [
+    //   {
+    //     title: 'List',
+    //     icon: 'arrow-right',
+    //     link: '/pages/assignment/list',
+    //   }
+    // ]
   },
 
 ];
