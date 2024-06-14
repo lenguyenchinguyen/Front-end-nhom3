@@ -1,13 +1,13 @@
 <nb-card>
     <nb-card-header>
-       <h5>Student transcript</h5>
-      <div class="col-12">
-        <a routerLink="/pages/bd/add" class="d-flex justify-content-end">
-          <button nbButton status="primary" class="add-button" size="small">
-            Add Point
-          </button>
-        </a>
-      </div>
+        <h5>Student transcript</h5>
+        <div class="col-12">
+            <a routerLink="/pages/bd/add" class="d-flex justify-content-end">
+                <button nbButton status="primary" class="add-button" size="small">
+                    Add Point
+                </button>
+            </a>
+        </div>
     </nb-card-header>
 
     <nb-card-body>
@@ -17,10 +17,10 @@
                 <div class="full-name-inputs">
                     <label for=""><strong>Filter:</strong></label>
                     <nb-select [(ngModel)]="selectmaHS" (selectedChange)="onFilterChange($event)">
-                      <nb-option [value]="null">All</nb-option>
-                      <nb-option *ngFor="let s of student" [value]="s.maHS">{{ s.ho_ten }}</nb-option>
+                        <nb-option [value]="null">All</nb-option>
+                        <nb-option *ngFor="let s of student" [value]="s.maHS">{{ s.ho_ten }}</nb-option>
                     </nb-select>
-                  </div>
+                </div>
             </div>
         </div>
         <table class="table">
@@ -71,6 +71,10 @@
                                 <i class="nb-edit"></i>
                             </button>
                         </a>
+                        <button nbButton status="danger" size="small" class="float-right ml-1"
+                            (click)="deleteTranscript(bd.maBD)">
+                            <i class="nb-trash"></i>
+                        </button>
                     </td>
                 </tr>
             </tbody>

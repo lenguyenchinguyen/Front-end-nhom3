@@ -2,12 +2,12 @@
     <div class="col-lg-12">
         <nb-card>
             <nb-card-header>
-                <h5>Nhập điểm</h5>
+                <h5>Entry point</h5>
             </nb-card-header>
             <nb-card-body [formGroup]="addForm">
                 <div class="row">
                     <div class="col-6">
-                        <label for=""><strong>Học sinh</strong></label>
+                        <label for=""><strong>Student</strong></label>
                         <div class="full-name-inputs">
                             <nb-select fullWidth [selected]="'Năm học'" formControlName="maHS">
                                 <nb-option *ngFor="let stu of student" [value]="stu.maHS">
@@ -17,7 +17,7 @@
                         </div>
                         <div class="text-danger"
                             *ngIf="addForm.get('maHS')!.invalid && (addForm.get('maHS')!.dirty || addForm.get('maHS')!.touched)">
-                            Vui lòng chọn học sinh !
+                            Student can't be null !
                         </div>
                         <label for=""><strong>Môn học</strong></label>
                         <div class="full-name-inputs">

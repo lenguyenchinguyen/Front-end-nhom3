@@ -4,6 +4,7 @@ import { ListComponent } from './list/list.component';
 import { AddComponent } from './add/add.component';
 
 import { SubjectComponent } from './subject.component';
+import { UpdateComponent } from './update/update.component';
 
 
 
@@ -24,7 +25,11 @@ const routes: Routes = [
         {
           path: 'delete/:maMon',
           component: ListComponent,
-        }
+        },
+        {
+          path: 'update/:maMon',
+          component: UpdateComponent,
+        },
       ],
     },
   ];

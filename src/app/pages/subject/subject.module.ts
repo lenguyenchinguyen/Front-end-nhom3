@@ -18,6 +18,7 @@ import { SubjectRoutingModule } from './subject-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListComponent } from './list/list.component';
 import { AddComponent } from './add/add.component';
+import { UpdateComponent } from './update/update.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { AddComponent } from './add/add.component';
     SubjectComponent,
     ListComponent,
     AddComponent,
+    UpdateComponent,
 
   ],
 })

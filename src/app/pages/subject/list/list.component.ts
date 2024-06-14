@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ISubect } from 'app/@core/interfaces/subject.interface';
+import { ISubject } from 'app/@core/interfaces/subject.interface';
 import { SubjectService } from 'app/@core/services/apis/subject.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class ListComponent implements OnInit {
     private sub: SubjectService,
 
   ) { }
-  LitsSub!: ISubect
+  LitsSub!: ISubject
 
   ngOnInit(): void {
     this.getSubject();
@@ -29,7 +29,7 @@ export class ListComponent implements OnInit {
   }
 
   deleteSubject(maMon: number) {
-    const confirmDelete = confirm("Bạn có chắc chắn muốn xóa môn học này?");
+    const confirmDelete = confirm("Do you want delete this subject?");
     if (confirmDelete) {
       this.sub.deleteSubject(maMon).subscribe(res => {
         console.log(res);

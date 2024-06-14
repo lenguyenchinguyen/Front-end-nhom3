@@ -10,7 +10,7 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th width="35%">STT</th>
+                    <th width="35%">Ordinal number</th>
                     <th width="50%">Subject</th>
                     <th>Act</th>
                 </tr>
@@ -20,7 +20,11 @@
                     <td>{{ i+1 }}</td>
                     <td>{{ subject.ten_mon }}</td>
                     <td>
-
+                      <a routerLink="/pages/subject/update/{{subject.maMon}}">
+                        <button nbButton status="success" size="small" class="float-right">
+                            <i class="nb-edit"></i>
+                        </button>
+                    </a>
                           <button nbButton status="danger" size="small" class="float-right ml-1" (click)="deleteSubject(subject.maMon)">
                             <i class="nb-trash" ></i>
                           </button>

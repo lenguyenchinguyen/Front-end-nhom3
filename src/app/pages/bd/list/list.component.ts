@@ -66,5 +66,15 @@ export class ListComponent implements OnInit {
       this.filteredListBd = this.listBd.filter(bd => bd.maHS === maHS);
     }
   }
+
+  deleteTranscript(maBD: number) {
+    const confirmDelete = confirm("Do you want delete this subject?");
+    if (confirmDelete) {
+      this.transcript.deleteTranscript(maBD).subscribe(res => {
+        console.log(res);
+        this.getAllBD();
+      });
+    }
+  }
   
 }
