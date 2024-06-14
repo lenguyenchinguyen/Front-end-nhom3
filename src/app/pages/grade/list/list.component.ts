@@ -1,21 +1,18 @@
 import { Component, OnInit} from '@angular/core';
 import { ClassService } from 'app/@core/services/apis/class.service';
 import { BlocksService } from 'app/@core/services/apis/blocks.service';
-import { IClasses } from 'app/@core/interfaces/class.interface';
+import { Iblocks } from 'app/@core/interfaces/blocks.interface';
 import { NbDialogService, NbToastrService } from '@nebular/theme';
 import { DeleteComponent } from '../delete/delete.component';
-
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss'],
+  styleUrls: ['./list.component.scss']
 })
-export class ListComponent implements OnInit {
-  gv: IClasses[]
-  data: IClasses[]
-  bl: IClasses[]
+export class ListComponent {
 
+  dataB: Iblocks[]
   constructor(
     private classes: ClassService,
     private blocks: BlocksService,
@@ -24,35 +21,13 @@ export class ListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getAllClass()
-    this.getGV()
-    this.getBlocks()
+    this.getAllBlocks()
   }
 
-  getAllClass() {
-    this.classes.getAllClass().subscribe(
-      (res) => {
-        this.data = res.data;
-        console.log(res.data);
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
-  }
-
-  getGV(){
-    this.classes.getAllGV().subscribe(res=>{
-        this.gv = res.data
-        console.log(res.data);
-    })
-  }
-
-  getBlocks(){
+  getAllBlocks(){
     this.blocks.getAllBlocks().subscribe(res=>{
-      this.bl = res.data 
-      console.log(res.data);
-      
+        this.dataB = res.data
+        console.log(this.dataB);
     })
   }
 
@@ -60,10 +35,10 @@ export class ListComponent implements OnInit {
     this.dialogService.open(DeleteComponent)
       .onClose.subscribe((confirmed: boolean) => {
         if (confirmed) {
-          this.classes.deleteClass(id).subscribe({
+          this.blocks.deleteBlocks(id).subscribe({
             next: res => {
-              this.nbToastrService.show('Class successfully deleted!', 'Success', { status: 'success' });
-              this.getAllClass();
+              this.nbToastrService.show('Blocks successfully deleted!', 'Success', { status: 'success' });
+              this.getAllBlocks();
             },
             error: err => {
               this.nbToastrService.show('Delete failed. Please try again.', 'Error', { status: 'danger' });

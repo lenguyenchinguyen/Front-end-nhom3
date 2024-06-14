@@ -1,17 +1,18 @@
 <nb-card>
     <nb-card-header>
        <h5>Student transcript</h5>
+      <div class="col-12">
+        <a routerLink="/pages/bd/add" class="d-flex justify-content-end">
+          <button nbButton status="primary" class="add-button" size="small">
+            Add Point
+          </button>
+        </a>
+      </div>
     </nb-card-header>
 
     <nb-card-body>
         <div class="row">
-            <div class="col-6">
-                <a routerLink="/pages/bd/add">
-                    <button nbButton status="primary" class="add-button" size="small">
-                         Add Point
-                    </button>
-                </a>
-            </div>
+
             <div class="col-6">
                 <div class="full-name-inputs">
                     <label for=""><strong>Filter:</strong></label>

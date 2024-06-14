@@ -1,17 +1,19 @@
 <nb-card>
   <nb-card-header>
     <h5>List Teacher</h5>
+
     <div class="card-body mt-2">
       <input type="text" class="col-3 form-control" [(ngModel)]="listFilter" placeholder="Search teachers" />
+      <a routerLink="/pages/teacher/add" class="d-flex justify-content-end">
+        <button nbButton status="primary" class="add-button"  size="small">
+          Add Teacher
+        </button>
+      </a>
     </div>
   </nb-card-header>
 
   <nb-card-body>
-    <a routerLink="/pages/teacher/add">
-      <button nbButton status="primary" class="add-button"  size="small">
-        Add Teacher
-      </button>
-    </a>
+
 
     <table class="table" *ngIf="teachers?.length > 0">
       <thead>

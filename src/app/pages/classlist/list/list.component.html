@@ -2,13 +2,13 @@
   <nb-card>
     <nb-card-header>
       <h5>Class List</h5>
-    </nb-card-header>
-    <nb-card-body>
-      <a routerLink="/pages/dslop/add">
+      <a routerLink="/pages/dslop/add" class="d-flex justify-content-end">
         <button nbButton status="primary" class="add-button" size="small">
-           Add New Class
+          Add New Class
         </button>
       </a>
+    </nb-card-header>
+    <nb-card-body>
       <table class="table" >
         <thead>
         <tr>
@@ -43,10 +43,9 @@
                 <i class="nb-edit"></i>
               </button>
             </a>
-            <a routerLink="/pages/dslop/delete/{{ class.maLop }}">
-              <button nbButton status="danger" size="large" class="float-right ml-1 m-lg-2">
-                <i class="nb-trash"></i>
-              </button>
+            <a (click)="delete(class.maLop)"><button nbButton status="danger" size="large" class="float-right ml-1 m-lg-2">
+              <i class="nb-trash"></i>
+            </button>
             </a>
           </td>
         </tr>

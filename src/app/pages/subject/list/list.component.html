@@ -1,17 +1,18 @@
 <nb-card>
     <nb-card-header>
-        Bảng danh sách môn học
+        <h5>Subject lisst</h5>
+      <a routerLink="/pages/subject/add" class="d-flex justify-content-end">
+        <button nbButton status="primary" class="add-button" size="small">Add Subject</button>
+      </a>
     </nb-card-header>
 
     <nb-card-body>
-
-        <button class="btn btn-primary mb-2" [routerLink]="'/pages/subject/add'">Thêm mới</button>
         <table class="table">
             <thead>
                 <tr>
                     <th width="35%">STT</th>
-                    <th width="50%">Môn học</th>
-                    <th>Hành động</th>
+                    <th width="50%">Subject</th>
+                    <th>Act</th>
                 </tr>
             </thead>
             <tbody>

@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ClassService } from 'app/@core/services/apis/class.service';
 import { FormControl, Validators } from '@angular/forms';
 import { BlocksService } from 'app/@core/services/apis/blocks.service';
+import { NbDialogService, NbToastrService } from '@nebular/theme';
 
 @Component({
   selector: 'app-update',
@@ -23,7 +24,8 @@ export class UpdateComponent implements OnInit {
     private classes: ClassService,
     private blocks: BlocksService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private toastr: NbToastrService
   ){}
 
   ngOnInit(): void {
@@ -43,7 +45,7 @@ export class UpdateComponent implements OnInit {
       let id =+ this.route.snapshot.params['id'];
       this.classes.updateClass(id, this.updateForm.value).subscribe(p=>{
         console.log(p);
-        alert('Update success')
+        this.toastr.show('Class successfully deleted!', 'Success', { status: 'success' });
         this.router.navigate(['/pages/dslop/list']);
       })
       console.log(this.updateForm.value);
@@ -53,8 +55,6 @@ export class UpdateComponent implements OnInit {
   getOneClass(){
     let id =+ this.route.snapshot.params['id'];
     this.classes.getClassById(id).subscribe(res=>{
-      this.oneClass = res.data 
-      console.log(this.oneClass);
       this.oneClass = res.data
       console.log(this.oneClass);
     })

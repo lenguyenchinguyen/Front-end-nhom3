@@ -1,12 +1,11 @@
 <nb-card>
   <nb-card-header>
-    <h3 class="text-center">List Student </h3>
-  </nb-card-header>
-  <nb-card-body>
-    <a routerLink="/pages/student/add">
+    <h3 class="">List Student </h3>
+    <a routerLink="/pages/student/add" class="d-flex justify-content-end">
       <button nbButton status="primary" class="add-button" size="small">Add Student</button>
     </a>
-
+  </nb-card-header>
+  <nb-card-body>
     <table class="table">
       <thead>
       <tr>
@@ -44,7 +43,7 @@
               <i class="nb-edit" [nbIcon]="editIconConfig" [iconSize]="'large'"></i>
             </button>
           </a>
-        
+
           <a routerLink="/pages/student/delete/{{student.maHS}}">
             <button (click)="deleteStudent(student.maHS)" nbButton status="danger" size="medium" class="float-right ml-1 m-lg-2">
               <i class="nb-trash" [nbIcon]="trashIconConfig" [iconSize]="'large'"></i>

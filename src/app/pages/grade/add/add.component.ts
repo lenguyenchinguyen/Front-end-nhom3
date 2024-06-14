@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -15,9 +16,6 @@ export class AddComponent implements OnInit {
 
   creatForm: FormGroup
 
-  listBlocks!: [];
-  listGV!: [];
-
   constructor(
     private classes: ClassService,
     private blocks: BlocksService,
@@ -27,36 +25,19 @@ export class AddComponent implements OnInit {
 
   ngOnInit(): void {
     this.creatForm = new FormGroup ({
-      ten_lop: new FormControl('', Validators.required),
-      maKhoi: new FormControl('', Validators.required),
-      maGV: new FormControl('', Validators.required)
+      ten_khoi: new FormControl('', Validators.required)
     })
-    this.getBlocks()
-    this.getTeachers()
   }
 
-  creatClass() {
+  creatGrade() {
     if (this.creatForm.valid) {
-      this.classes.postClass(this.creatForm.value).subscribe(p=>{
+      this.blocks.postBlocks(this.creatForm.value).subscribe(p=>{
         console.log(p);
-        this.notifi.show('Class successfully add!', 'Success', { status: 'success' });
-        this.router.navigate(['/pages/dslop/list']);
+        this.notifi.show('Blocks successfully add!', 'Success', { status: 'success' });
+        this.router.navigate(['/pages/grade/list']);
       })
       console.log(this.creatForm.value);
     }
   }
-
-  getBlocks(){
-    this.blocks.getAllBlocks().subscribe(res=>{
-      this.listBlocks = res.data;
-      console.log(this.listBlocks);
-    })
-  }
-
-  getTeachers(){
-    this.classes.getAllGV().subscribe(res=>{
-      this.listGV = res.data;
-      console.log(this.listGV);
-    })
-  }
 }
+

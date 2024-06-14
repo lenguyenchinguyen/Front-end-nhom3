@@ -1,0 +1,41 @@
+<div class="container">
+    <nb-card>
+      <nb-card-header>
+        <h5>Blocks List</h5>
+        <a routerLink="/pages/grade/add" class="d-flex justify-content-end">
+          <button nbButton status="primary" class="add-button" size="small">
+            Add New Class
+          </button>
+        </a>
+      </nb-card-header>
+      <nb-card-body>
+        <table class="table" >
+          <thead>
+          <tr>
+            <th scope="col" width='35%'>STT</th>
+            <th scope="col" width='50%'>Blocks</th>
+            <th>Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let block of dataB; index as i">
+            <td>{{ i+1 }}</td>
+            <td>{{block.ten_khoi}}</td>
+            <td>
+              <a routerLink="/pages/grade/update/{{ block.maKhoi }}">
+                <button nbButton status="success" size="large" class="float-right">
+                  <i class="nb-edit"></i>
+                </button>
+              </a>
+              <a (click)="delete(block.maKhoi)"><button nbButton status="danger" size="large" class="float-right ml-1 m-lg-2">
+                <i class="nb-trash"></i>
+              </button>
+              </a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </nb-card-body>
+    </nb-card>
+  </div>
+  

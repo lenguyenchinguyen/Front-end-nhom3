@@ -67,9 +67,9 @@ const routes: Routes = [{
     },
     {
       path: 'grade',
-      component: GradeComponent,
-      data: {breadcrumb: 'Grade'},
-    }
+      loadChildren: () => import('./grade/grade.module')
+      .then(m => m.GradeModule),
+    },
   ],
 }];
 
