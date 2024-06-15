@@ -1,0 +1,14 @@
+.heee{
+  display: flex;
+}
+.custom-paginator{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+button{
+  margin: 0.2rem;
+}
+p{
+  margin-top: 10px
+}

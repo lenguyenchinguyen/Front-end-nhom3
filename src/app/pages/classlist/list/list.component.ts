@@ -6,6 +6,7 @@ import { NbDialogService, NbToastrService } from '@nebular/theme';
 import { DeleteComponent } from '../delete/delete.component';
 
 
+
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -15,6 +16,12 @@ export class ListComponent implements OnInit {
   gv: IClasses[]
   data: IClasses[]
   bl: IClasses[]
+  dataClass!:IClasses[]
+  listClass!: IClasses[];
+  last_page: number = 0;
+  current_page:number =0;
+
+  apiurl = `http://127.0.0.1:3300/api/class`
 
   constructor(
     private classes: ClassService,
@@ -32,8 +39,10 @@ export class ListComponent implements OnInit {
   getAllClass() {
     this.classes.getAllClass().subscribe(
       (res) => {
-        this.data = res.data;
-        console.log(res.data);
+        this.listClass = res.data;
+        this.current_page = res.current_page
+        this.last_page = res.last_page
+        console.log(res.data, this.last_page, this.current_page);
       },
       (error) => {
         console.error(error);
@@ -71,5 +80,8 @@ export class ListComponent implements OnInit {
           });
         }
       });
+  }
+  getPage(value:any) {
+    this.listClass = value;
   }
 }

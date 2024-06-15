@@ -20,7 +20,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let class of data; index as i">
+        <tr *ngFor="let class of listClass; index as i">
           <td>{{ i+1 }}</td>
           <td>
             <div *ngFor="let blocks of bl">
@@ -51,6 +51,11 @@
         </tr>
         </tbody>
       </table>
+      <app-paginator  
+      [current_page]="current_page"
+      [last_page]="last_page"
+      [apiUrl]="apiurl"
+      (dataList)="getPage($event)"></app-paginator>
     </nb-card-body>
   </nb-card>
 </div>
