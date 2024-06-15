@@ -13,6 +13,7 @@ export class PaginatorComponent implements OnInit {
   @Input() last_page!:number;
 
   @Output() dataList: EventEmitter<any> = new EventEmitter();
+  @Output() Stt: EventEmitter<any> = new EventEmitter();
 
   indexPage= 1;
 
@@ -69,6 +70,7 @@ export class PaginatorComponent implements OnInit {
   getData(){
     this.getPaginator().subscribe(res=>{
       this.dataList.emit(res.data)
+      this.Stt.emit((res.current_page-1)*5)
     })
   }
 

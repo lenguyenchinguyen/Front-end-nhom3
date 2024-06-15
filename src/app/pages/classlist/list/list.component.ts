@@ -20,7 +20,7 @@ export class ListComponent implements OnInit {
   listClass!: IClasses[];
   last_page: number = 0;
   current_page:number =0;
-
+  STT:number = 0
   apiurl = `http://127.0.0.1:3300/api/class`
 
   constructor(
@@ -83,5 +83,10 @@ export class ListComponent implements OnInit {
   }
   getPage(value:any) {
     this.listClass = value;
+  }
+  getStt(stt:any){
+    this.STT = stt
+    console.log(this.STT);
+    
   }
 }

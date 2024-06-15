@@ -21,7 +21,7 @@
         </thead>
         <tbody>
         <tr *ngFor="let class of listClass; index as i">
-          <td>{{ i+1 }}</td>
+          <td>{{STT + i +1}}</td>
           <td>
             <div *ngFor="let blocks of bl">
               <span *ngIf="class.maKhoi == blocks.maKhoi">
@@ -55,7 +55,8 @@
       [current_page]="current_page"
       [last_page]="last_page"
       [apiUrl]="apiurl"
-      (dataList)="getPage($event)"></app-paginator>
+      (dataList)="getPage($event)"
+      (Stt)="getStt($event)"></app-paginator>
     </nb-card-body>
   </nb-card>
 </div>
