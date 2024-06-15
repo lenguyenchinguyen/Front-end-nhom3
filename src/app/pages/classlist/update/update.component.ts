@@ -46,7 +46,7 @@ export class UpdateComponent implements OnInit {
       this.classes.updateClass(id, this.updateForm.value).subscribe(p=>{
         console.log(p);
         this.toastr.show('Class successfully deleted!', 'Success', { status: 'success' });
-        this.router.navigate(['/pages/dslop/list']);
+        this.router.navigate(['/pages/class/list']);
       })
       console.log(this.updateForm.value);
     }
