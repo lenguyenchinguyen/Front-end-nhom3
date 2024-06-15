@@ -61,7 +61,7 @@ const routes: Routes = [{
       .then(m => m.BdModule),
     },
     {
-      path: 'dslop',
+      path: 'class',
       loadChildren: () => import('./classlist/dslop.module')
       .then(m => m.DslopModule),
     },

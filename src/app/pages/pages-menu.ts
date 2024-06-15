@@ -13,7 +13,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Class',
     icon: 'layers-outline',
-    link: '/pages/dslop/list'
+    link: '/pages/class/list'
   },
   {
     title: 'Blocks',
