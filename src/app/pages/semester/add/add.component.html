@@ -8,10 +8,10 @@
                 <div class="row">
                     <div class="col-6">
                         <label for=""><strong>Semester</strong></label>
-                        <input type="text" nbInput fullWidth placeholder="Nhập học kì" formControlName="hoc_ki">
+                        <input type="text" nbInput fullWidth placeholder="Enter the semester" formControlName="hoc_ki">
                         <div class="text-danger"
                             *ngIf="addForm.get('hoc_ki')!.invalid && (addForm.get('hoc_ki')!.dirty || addForm.get('hoc_ki')!.touched)">
-                            Học kì không được bỏ trống !
+                          Semesters cannot be left blank !
                         </div>
                     </div>
                     <div class="col-6">
@@ -25,7 +25,7 @@
                         </div>
                         <div class="text-danger"
                             *ngIf="addForm.get('maNH')!.invalid && (addForm.get('maNH')!.dirty || addForm.get('maNH')!.touched)">
-                            Vui lòng chọn năm học !
+                          Please select a school year !
                         </div>
                     </div>
                 </div>

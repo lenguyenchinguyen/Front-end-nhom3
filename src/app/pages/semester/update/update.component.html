@@ -11,7 +11,7 @@
                         <input type="text" nbInput fullWidth formControlName="hoc_ki" [(ngModel)]="semeById.hoc_ki">
                         <div class="text-danger"
                             *ngIf="updateForm.get('hoc_ki')!.invalid && (updateForm.get('hoc_ki')!.dirty || updateForm.get('hoc_ki')!.touched)">
-                            Học kì không được bỏ trống !
+                          Semesters cannot be left blank !
                         </div>
                     </div>
                     <div class="col-6">
@@ -25,7 +25,7 @@
                         </div>
                         <div class="text-danger"
                             *ngIf="updateForm.get('maNH')!.invalid && (updateForm.get('maNH')!.dirty || updateForm.get('maNH')!.touched)">
-                            Vui lòng chọn năm học !
+                          Please select a school year !
                         </div>
                     </div>
 

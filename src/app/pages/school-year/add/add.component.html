@@ -6,10 +6,10 @@
       </nb-card-header>
       <nb-card-body [formGroup]="addForm">
         <label for=""><strong>School Year</strong></label>
-        <input type="text" nbInput fullWidth placeholder="Nhập năm học" formControlName="nam_hoc">
+        <input type="text" nbInput fullWidth placeholder="Enter the school year" formControlName="nam_hoc">
         <div class="text-danger"
           *ngIf="addForm.get('nam_hoc')!.invalid && (addForm.get('nam_hoc')!.dirty || addForm.get('nam_hoc')!.touched)">
-          Năm học không được bỏ trống !
+          School year cannot be left blank !
         </div>
         <button (click)="addSchoolYear()" nbButton status="primary" class="add-button" size="small">
           Add

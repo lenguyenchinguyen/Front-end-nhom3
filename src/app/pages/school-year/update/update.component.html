@@ -9,7 +9,7 @@
         <input type="text" nbInput fullWidth formControlName="nam_hoc" [(ngModel)]="listSY.nam_hoc">
         <div class="text-danger"
           *ngIf="updateForm.get('nam_hoc')!.invalid && (updateForm.get('nam_hoc')!.dirty || updateForm.get('nam_hoc')!.touched)">
-          Năm học không được bỏ trống !
+          School year cannot be left blank  !
         </div>
         <button (click)="saveUpdateSchoolYear()" nbButton status="primary" class="add-button" size="small">
           Edit
