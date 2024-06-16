@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { FormsModule as ngFormsModule } from '@angular/forms';
+import { NbToastrModule, NbDialogModule, NbDialogService} from '@nebular/theme';
+import { PaginatorModule } from 'app/@theme/components/paginator/paginator.module';
 import {
   NbActionsModule,
   NbButtonModule,
@@ -38,16 +40,20 @@ import { DeleteComponent } from './delete/delete.component';
     NbSelectModule,
     NbIconModule,
     ngFormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NbToastrModule,
+    NbDialogModule.forChild(),
+    PaginatorModule
   ],
   declarations: [
     SemesterComponent,
     AddComponent,
     ListComponent,
-    UpdateComponent
+    UpdateComponent,
+    DeleteComponent
   ],
   providers: [
-    DeleteComponent
+    NbDialogService
   ]
 })
 export class SemesterModule { }

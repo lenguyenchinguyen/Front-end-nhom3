@@ -1,11 +1,11 @@
 <nb-card>
     <nb-card-header>
         <h5>List School Year</h5>
-      <a routerLink="/pages/school-year/add" class="d-flex justify-content-end">
-        <button nbButton status="primary" class="add-button" size="small">
-          Add School Year
-        </button>
-      </a>
+        <a routerLink="/pages/school-year/add" class="d-flex justify-content-end">
+            <button nbButton status="primary" class="add-button" size="small">
+                Add School Year
+            </button>
+        </a>
     </nb-card-header>
 
     <nb-card-body>
@@ -18,7 +18,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let year of listSY; index as i">
+                <tr *ngFor="let year of Listpage; index as i">
                     <td>{{ i+1 }}</td>
                     <td>{{ year.nam_hoc}}</td>
                     <td>
@@ -27,15 +27,14 @@
                                 <i class="nb-edit"></i>
                             </button>
                         </a>
-
-                        <a routerLink="/pages/school-year/delete/{{year.maNH}}">
-                            <button (click)="delete(year.maNH)" nbButton status="danger" size="small" class="float-right ml-1 m-lg-2">
-                                <i class="nb-trash"></i>
-                            </button>
-                        </a>
+                        <button (click)="delete(year.maNH)" nbButton status="danger" size="small"
+                            class="float-right ml-1 m-lg-2">
+                            <i class="nb-trash"></i>
+                        </button>
                     </td>
                 </tr>
             </tbody>
         </table>
+        <app-paginator [current_page]="currentPage" [last_page]="lastPage" [apiUrl]="apiurl" (dataList)="getPage($event)"></app-paginator>
     </nb-card-body>
 </nb-card>

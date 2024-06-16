@@ -1,5 +1,12 @@
-<div class="card">
-    <div class="card-body">
-        <h2>Bạn đã hủy xóa</h2>
-    </div>
-</div>
+<nb-card>
+    <nb-card-header>
+        <span>Xác nhận xóa</span>
+    </nb-card-header>
+    <nb-card-body>
+        <p>Bạn có chắc chắn muốn xóa năm học này không?</p>
+    </nb-card-body>
+    <nb-card-footer>
+        <button nbButton status="danger" (click)="confirm()">Xóa</button>
+        <button nbButton status="basic" (click)="cancel()" >Hủy</button>
+    </nb-card-footer>
+</nb-card>

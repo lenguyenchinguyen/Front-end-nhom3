@@ -1,11 +1,11 @@
 <nb-card>
     <nb-card-header>
-      <h5>List Semester</h5>
-      <a routerLink="/pages/semester/add" class="d-flex justify-content-end">
-        <button nbButton status="primary" class="add-button" size="small">
-          Add Semester
-        </button>
-      </a>
+        <h5>List Semester</h5>
+        <a routerLink="/pages/semester/add" class="d-flex justify-content-end">
+            <button nbButton status="primary" class="add-button" size="small">
+                Add Semester
+            </button>
+        </a>
     </nb-card-header>
 
     <nb-card-body>
@@ -19,7 +19,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let semester of listSeme; index as i">
+                <tr *ngFor="let semester of Listpage; index as i">
                     <td>{{ i+1 }}</td>
                     <td>{{ semester.hoc_ki }}</td>
                     <td>
@@ -35,14 +35,14 @@
                                 <i class="nb-edit"></i>
                             </button>
                         </a>
-                        <a routerLink="/pages/semester/delete/{{semester.maHK}}">
-                            <button (click)="delete(semester.maHK)" nbButton status="danger" size="small" class="float-right ml-1 m-lg-2">
-                                <i class="nb-trash"></i>
-                            </button>
-                        </a>
+                        <button (click)="delete(semester.maHK)" nbButton status="danger" size="small"
+                            class="float-right ml-1 m-lg-2">
+                            <i class="nb-trash"></i>
+                        </button>
                     </td>
                 </tr>
             </tbody>
         </table>
+        <app-paginator [current_page]="currentPage" [last_page]="lastPage" [apiUrl]="apiurl" (dataList)="getPage($event)"></app-paginator>
     </nb-card-body>
 </nb-card>

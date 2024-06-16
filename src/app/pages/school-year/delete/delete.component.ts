@@ -1,23 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-
-import { SChoolYearService } from 'app/@core/services/apis/school-year.service';
+import { Component } from '@angular/core';
+import { NbDialogRef } from '@nebular/theme';
 
 @Component({
   selector: 'app-delete',
   templateUrl: './delete.component.html',
   styleUrls: ['./delete.component.scss']
 })
-export class DeleteComponent implements OnInit {
-  constructor(private del: SChoolYearService, private router: Router){}
+export class DeleteComponent {
+  constructor(protected ref: NbDialogRef<DeleteComponent>) { }
 
-  ngOnInit(): void {
-
+  confirm() {
+    this.ref.close(true);
   }
 
-  deleteSchoolYear(maNH: number){
-    this.del.deleteSchoolYear(maNH).subscribe(res => {
-      this.router.navigate(['/pages/school-year/list'])
-    })
+  cancel() {
+    this.ref.close(false);
   }
 }

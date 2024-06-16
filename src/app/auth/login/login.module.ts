@@ -6,7 +6,8 @@ import {
   NbCheckboxModule,
   NbInputModule,
   NbLayoutModule,
-  NbThemeModule
+  NbThemeModule,
+  NbToastrModule
 } from "@nebular/theme";
 import {NbAuthModule} from "@nebular/auth";
 import {NgForOf, NgIf} from "@angular/common";
@@ -30,7 +31,7 @@ import {ThemeModule} from "../../@theme/theme.module";
     NbButtonModule,
     ReactiveFormsModule,
     ThemeModule,
-
+    NbToastrModule
   ],
   declarations: [
     LoginComponent
