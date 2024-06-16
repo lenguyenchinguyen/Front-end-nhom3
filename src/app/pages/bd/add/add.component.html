@@ -19,7 +19,7 @@
                             *ngIf="addForm.get('maHS')!.invalid && (addForm.get('maHS')!.dirty || addForm.get('maHS')!.touched)">
                             Student can't be null !
                         </div>
-                        <label for=""><strong>Môn học</strong></label>
+                        <label for=""><strong>Subject</strong></label>
                         <div class="full-name-inputs">
                             <nb-select fullWidth [selected]="'Năm học'" formControlName="maMon">
                                 <nb-option *ngFor="let sub of subject" [value]="sub.maMon">
@@ -33,7 +33,7 @@
                         </div>
                     </div>
                     <div class="col-6">
-                        <label for=""><strong>Năm học</strong></label>
+                        <label for=""><strong>Year</strong></label>
                         <div class="full-name-inputs">
                             <nb-select fullWidth [selected]="'Năm học'" formControlName="maNH">
                                 <nb-option *ngFor="let y of year" [value]="y.maNH">
@@ -45,7 +45,7 @@
                             *ngIf="addForm.get('maNH')!.invalid && (addForm.get('maNH')!.dirty || addForm.get('maNH')!.touched)">
                             Can't be null !
                         </div>
-                        <label for=""><strong>Học kì</strong></label>
+                        <label for=""><strong>Semester</strong></label>
                         <div class="full-name-inputs">
                             <nb-select fullWidth [selected]="'Năm học'" formControlName="maHK">
                                 <nb-option *ngFor="let seme of semester" [value]="seme.maHK">
@@ -59,8 +59,8 @@
                         </div>
                     </div>
                 </div>
-                <label for=""><strong>Điểm</strong></label>
-                <input type="text" name="diem" id="diem" nbInput fullWidth placeholder="Nhập điểm" formControlName="diem">
+                <label for=""><strong>Point</strong></label>
+                <input type="text" name="diem" id="diem" nbInput fullWidth placeholder="Entry point" formControlName="diem">
                 <div class="text-danger"
                             *ngIf="addForm.get('diem')!.invalid && (addForm.get('diem')!.dirty || addForm.get('diem')!.touched)">
                             Can't be null !
