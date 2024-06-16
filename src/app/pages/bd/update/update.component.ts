@@ -25,7 +25,7 @@ export class UpdateComponent implements OnInit {
       maMon: new FormControl('', Validators.required),
       maNH: new FormControl('', Validators.required),
       maHK: new FormControl('', Validators.required),
-      diem: new FormControl('', Validators.required),
+      diem: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.max(10)]),
     });
     this.getAllSemester()
     this.getAllStudent()
@@ -38,7 +38,7 @@ export class UpdateComponent implements OnInit {
   getUpdate(maBD: number){
     this.update.getTranscriptById(maBD).subscribe(res => {
       console.log(res.data);
-      
+
       this.ListById = res.data
     })
   }

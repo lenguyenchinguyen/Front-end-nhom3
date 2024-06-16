@@ -23,7 +23,7 @@ export class AddComponent implements OnInit{
       maMon: new FormControl('', Validators.required),
       maNH: new FormControl('', Validators.required),
       maHK: new FormControl('', Validators.required),
-      diem: new FormControl('', Validators.required),
+      diem: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.max(10)]),
     });
 
     this.getAllSemester()
@@ -34,7 +34,7 @@ export class AddComponent implements OnInit{
 
   addTranscript(){
     if (this.addForm.valid) {
-      this.add.postTranscript(this.addForm.value).subscribe(res => {  
+      this.add.postTranscript(this.addForm.value).subscribe(res => {
         console.log(res);
         this.router.navigate(['/pages','bd', 'list'])
       })

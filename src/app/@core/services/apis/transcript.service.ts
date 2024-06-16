@@ -39,6 +39,10 @@ export class TranscriptService {
         })
     }
 
+    deleteTranscript(maBD: number): Observable<any>{
+      return this.http.delete(this.API_URL + 'transcripts/' + maBD)
+    }
+
     getStudent(): Observable<any> {
         return this.http.get(this.API_URL + 'students')
     }

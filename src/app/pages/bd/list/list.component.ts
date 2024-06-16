@@ -10,8 +10,8 @@ import { TranscriptService } from 'app/@core/services/apis/transcript.service';
 export class ListComponent implements OnInit {
   lastPage: number = 0;
   currentPage: number = 0
-  nextPage: number =0;
-  previousPage: number =0;
+  //nextPage: number =0;
+  //previousPage: number =0;
   apiUrl = "http://127.0.0.1:3300/api/transcripts"
   constructor(private transcript: TranscriptService){}
   listBd: ITranscript[]
@@ -33,12 +33,12 @@ export class ListComponent implements OnInit {
 
   getAllBD() {
     this.transcript.getTranscript().subscribe(res => {
-     
+
       this.currentPage = res.current_page;
       this.lastPage = res.last_page;
       console.log(res.data);
       this.filteredListBd = res.data
-     
+
     })
   }
   getPage(res: any){
@@ -87,5 +87,5 @@ export class ListComponent implements OnInit {
       });
     }
   }
-  
+
 }

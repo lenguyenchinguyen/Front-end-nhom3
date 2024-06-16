@@ -25,7 +25,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Blocks',
     icon: 'flag-outline',
-    link: '/pages/grade',
+    link: '/pages/grade/list',
   },
   {
     title: 'Students',

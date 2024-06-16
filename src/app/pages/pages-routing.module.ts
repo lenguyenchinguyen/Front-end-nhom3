@@ -5,6 +5,7 @@ import {PagesComponent} from './pages.component';
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import { GradeComponent } from './grade/grade.component';
 import {DslopModule} from "./classlist/dslop.module";
+import {GradeModule} from "./grade/grade.module";
 
 const routes: Routes = [{
   path: '',
@@ -67,8 +68,8 @@ const routes: Routes = [{
     },
     {
       path: 'grade',
-      component: GradeComponent,
-      data: {breadcrumb: 'Grade'},
+      loadChildren: () => import('./grade/grade.module')
+        .then(m => m.GradeModule),
     }
   ],
 }];

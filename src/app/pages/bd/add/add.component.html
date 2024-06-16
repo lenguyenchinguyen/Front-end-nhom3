@@ -62,9 +62,11 @@
                 <label for=""><strong>Point</strong></label>
                 <input type="text" name="diem" id="diem" nbInput fullWidth placeholder="Entry point" formControlName="diem">
                 <div class="text-danger"
-                            *ngIf="addForm.get('diem')!.invalid && (addForm.get('diem')!.dirty || addForm.get('diem')!.touched)">
-                            Can't be null !
-                        </div>
+                     *ngIf="addForm.get('diem')?.invalid && (addForm.get('diem')?.dirty || addForm.get('diem')?.touched)">
+                  <span *ngIf="addForm.get('diem')?.errors?.required">Point cannot be left blank.</span>
+                  <span *ngIf="addForm.get('diem')?.errors?.pattern">Point must is number.</span>
+                  <span *ngIf="addForm.get('diem')?.errors?.max">Point must < 10.</span>
+                </div>
                 <button (click)="addTranscript()" nbButton status="primary" class="add-button" size="small">
                     <i class="nb-plus"></i> Add
                 </button>

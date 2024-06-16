@@ -20,7 +20,6 @@ import { GradeComponent } from './grade/grade.component';
   ],
   declarations: [
     PagesComponent,
-    GradeComponent
   ],
   providers: []
 })

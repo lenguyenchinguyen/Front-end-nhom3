@@ -11,8 +11,8 @@ export class ListComponent implements OnInit {
   listData: any;
   lastPage: number = 0;
   currentPage: number = 0
-  nextPage: number =0;
-  previousPage: number =0;
+  //nextPage: number =0;
+  //previousPage: number =0;
   apiUrl = "http://127.0.0.1:3300/api/subject"
   constructor(
     private sub: SubjectService,

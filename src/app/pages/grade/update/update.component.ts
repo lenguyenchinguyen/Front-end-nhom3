@@ -5,7 +5,7 @@ import { ClassService } from 'app/@core/services/apis/class.service';
 import { FormControl, Validators } from '@angular/forms';
 import { BlocksService } from 'app/@core/services/apis/blocks.service';
 import { NbDialogService, NbToastrService } from '@nebular/theme';
-import { Iblocks } from 'app/@core/interfaces/blocks.interface';
+//import { Iblocks } from 'app/@core/interfaces/blocks.interface';
 
 @Component({
   selector: 'update-add',

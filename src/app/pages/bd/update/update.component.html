@@ -61,12 +61,14 @@
                 </div>
                 <label for=""><strong>Point</strong></label>
                 <input *ngIf="ListById" type="text" name="diem" id="diem" nbInput fullWidth placeholder="Nhập điểm" formControlName="diem" [(ngModel)]="ListById.diem">
-                <div class="text-danger"
-                            *ngIf="updateForm.get('diem')!.invalid && (updateForm.get('diem')!.dirty || updateForm.get('diem')!.touched)">
-                            Can't be null !
-                        </div>
+              <div class="text-danger"
+                   *ngIf="updateForm.get('diem')?.invalid && (updateForm.get('diem')?.dirty || updateForm.get('diem')?.touched)">
+                <span *ngIf="updateForm.get('diem')?.errors?.required">Point cannot be left blank.</span>
+                <span *ngIf="updateForm.get('diem')?.errors?.pattern">Point must is number.</span>
+                <span *ngIf="updateForm.get('diem')?.errors?.max">Point must < 10.</span>
+              </div>
                 <button (click)="saveUpdateTranscript()" nbButton status="primary" class="add-button" size="small">
-                    <i class="nb-plus"></i>Edit
+                    Update
                 </button>
                 <button (click)="cancle()" nbButton status="danger" class="cancle-button" size="small">
                     Cancle

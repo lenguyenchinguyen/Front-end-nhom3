@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ISubect } from 'app/@core/interfaces/subject.interface';
+import { ISubject } from 'app/@core/interfaces/subject.interface';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -18,7 +18,7 @@ export class SubjectService {
         return this.http.get(this.API_URL);
     }
 
-    postSubject(sub: ISubect): Observable<any> {
+    postSubject(sub: ISubject): Observable<any> {
         return this.http.post(this.API_URL, {
             ten_mon: sub.ten_mon,
         });
@@ -29,7 +29,7 @@ export class SubjectService {
     getSubjectBymaMon(maMon: number): Observable<any> {
         return this.http.get(this.API_URL + maMon);
     }
-    putSubject(maMon: number, sub: ISubect): Observable<any> {
+    putSubject(maMon: number, sub: ISubject): Observable<any> {
         return this.http.put(this.API_URL + maMon, {
             ten_mon: sub.ten_mon,
         });
