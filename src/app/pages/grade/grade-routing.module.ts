@@ -1,14 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { DslopComponent } from './dslop.component';
-import { AddComponent } from './add/add.component';
+import { GradeComponent } from './grade.component';
 import { ListComponent } from './list/list.component';
+import { AddComponent } from './add/add.component';
+import { DeleteComponent } from './delete/delete.component';
+import { UpdateComponent } from './update/update.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: DslopComponent,
+    component: GradeComponent,
     children: [
       {
         path: 'list',
@@ -18,6 +20,14 @@ const routes: Routes = [
         path: 'add',
         component: AddComponent,
       },
+      {
+        path: 'delete/:id',
+        component: DeleteComponent,
+      },
+      {
+        path: 'update/:id',
+        component: UpdateComponent,
+      },
     ],
   },
 ];
@@ -26,4 +36,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class DsRoutingModule {}
+export class GradeRoutingModule {}

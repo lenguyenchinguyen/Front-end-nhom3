@@ -2,14 +2,13 @@
   <nb-card>
     <nb-card-header>
       <h5>Class List</h5>
-      <a routerLink="/pages/dslop/add" class="d-flex justify-content-end">
+      <a routerLink="/pages/class/add" class="d-flex justify-content-end">
         <button nbButton status="primary" class="add-button" size="small">
           Add New Class
         </button>
       </a>
     </nb-card-header>
     <nb-card-body>
-
       <table class="table" >
         <thead>
         <tr>
@@ -21,8 +20,8 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let class of data; index as i">
-          <td>{{ i+1 }}</td>
+        <tr *ngFor="let class of listClass; index as i">
+          <td>{{STT + i +1}}</td>
           <td>
             <div *ngFor="let blocks of bl">
               <span *ngIf="class.maKhoi == blocks.maKhoi">
@@ -39,12 +38,12 @@
             </div>
           </td>
           <td>
-            <a routerLink="/pages/dslop/update/{{ class.maLop }}">
+            <a routerLink="/pages/class/update/{{ class.maLop }}">
               <button nbButton status="success" size="large" class="float-right">
                 <i class="nb-edit"></i>
               </button>
             </a>
-            <a routerLink="/pages/dslop/delete/{{ class.maLop }}"><button nbButton status="danger" size="large" class="float-right ml-1 m-lg-2">
+            <a (click)="delete(class.maLop)"><button nbButton status="danger" size="large" class="float-right ml-1 m-lg-2">
               <i class="nb-trash"></i>
             </button>
             </a>
@@ -52,6 +51,12 @@
         </tr>
         </tbody>
       </table>
+      <app-paginator  
+      [current_page]="current_page"
+      [last_page]="last_page"
+      [apiUrl]="apiurl"
+      (dataList)="getPage($event)"
+      (Stt)="getStt($event)"></app-paginator>
     </nb-card-body>
   </nb-card>
 </div>

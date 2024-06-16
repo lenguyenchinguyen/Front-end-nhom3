@@ -22,6 +22,7 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { UpdateComponent } from './update/update.component';
 import { DeleteComponent } from './delete/delete.component';
 import { FormsModule } from '@angular/forms';
+import { PaginatorModule } from 'app/@theme/components/paginator/paginator.module';
 
 @NgModule({
   imports: [
@@ -40,7 +41,8 @@ import { FormsModule } from '@angular/forms';
     ngFormsModule,
     Ng2SmartTableModule,
     FormsModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PaginatorModule
   ],
   declarations: [
     DslopComponent,
