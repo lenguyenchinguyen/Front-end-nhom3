@@ -19,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListComponent } from './list/list.component';
 import { AddComponent } from './add/add.component';
 import { UpdateComponent } from './update/update.component';
+import { PaginatorModule } from 'app/@theme/components/paginator/paginator.module';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { UpdateComponent } from './update/update.component';
     NbSelectModule,
     NbIconModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PaginatorModule
   ],
   declarations: [
     SubjectComponent,

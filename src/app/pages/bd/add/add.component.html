@@ -29,7 +29,7 @@
                         </div>
                         <div class="text-danger"
                             *ngIf="addForm.get('maMon')!.invalid && (addForm.get('maMon')!.dirty || addForm.get('maMon')!.touched)">
-                            Vui lòng chọn môn học !
+                            Can't be null !
                         </div>
                     </div>
                     <div class="col-6">
@@ -43,7 +43,7 @@
                         </div>
                         <div class="text-danger"
                             *ngIf="addForm.get('maNH')!.invalid && (addForm.get('maNH')!.dirty || addForm.get('maNH')!.touched)">
-                            Vui lòng chọn năm học !
+                            Can't be null !
                         </div>
                         <label for=""><strong>Học kì</strong></label>
                         <div class="full-name-inputs">
@@ -55,7 +55,7 @@
                         </div>
                         <div class="text-danger"
                             *ngIf="addForm.get('maHK')!.invalid && (addForm.get('maHK')!.dirty || addForm.get('maHK')!.touched)">
-                            Vui lòng chọn học kì !
+                            Can't be null!
                         </div>
                     </div>
                 </div>
@@ -63,10 +63,10 @@
                 <input type="text" name="diem" id="diem" nbInput fullWidth placeholder="Nhập điểm" formControlName="diem">
                 <div class="text-danger"
                             *ngIf="addForm.get('diem')!.invalid && (addForm.get('diem')!.dirty || addForm.get('diem')!.touched)">
-                            Vui lòng chọn học kì !
+                            Can't be null !
                         </div>
                 <button (click)="addTranscript()" nbButton status="primary" class="add-button" size="small">
-                    <i class="nb-plus"></i> Thêm
+                    <i class="nb-plus"></i> Add
                 </button>
             </nb-card-body>
         </nb-card>

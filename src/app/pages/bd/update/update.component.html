@@ -17,7 +17,7 @@
                         </div>
                         <div class="text-danger"
                             *ngIf="updateForm.get('maHS')!.invalid && (updateForm.get('maHS')!.dirty || updateForm.get('maHS')!.touched)">
-                            Vui lòng chọn học sinh !
+                            Can't be null !
                         </div>
                         <label for=""><strong>Subject</strong></label>
                         <div class="full-name-inputs">
@@ -29,7 +29,7 @@
                         </div>
                         <div class="text-danger"
                             *ngIf="updateForm.get('maMon')!.invalid && (updateForm.get('maMon')!.dirty || updateForm.get('maMon')!.touched)">
-                            Vui lòng chọn môn học !
+                            Can't be null !
                         </div>
                     </div>
                     <div class="col-6">
@@ -43,7 +43,7 @@
                         </div>
                         <div class="text-danger"
                             *ngIf="updateForm.get('maNH')!.invalid && (updateForm.get('maNH')!.dirty || updateForm.get('maNH')!.touched)">
-                            Vui lòng chọn năm học !
+                            Can't be null !
                         </div>
                         <label for=""><strong>Semester</strong></label>
                         <div class="full-name-inputs">
@@ -55,7 +55,7 @@
                         </div>
                         <div class="text-danger"
                             *ngIf="updateForm.get('maHK')!.invalid && (updateForm.get('maHK')!.dirty || updateForm.get('maHK')!.touched)">
-                            Vui lòng chọn học kì !
+                            Can't be nullì !
                         </div>
                     </div>
                 </div>
@@ -63,7 +63,7 @@
                 <input *ngIf="ListById" type="text" name="diem" id="diem" nbInput fullWidth placeholder="Nhập điểm" formControlName="diem" [(ngModel)]="ListById.diem">
                 <div class="text-danger"
                             *ngIf="updateForm.get('diem')!.invalid && (updateForm.get('diem')!.dirty || updateForm.get('diem')!.touched)">
-                            Vui lòng chọn học kì !
+                            Can't be null !
                         </div>
                 <button (click)="saveUpdateTranscript()" nbButton status="primary" class="add-button" size="small">
                     <i class="nb-plus"></i>Edit
