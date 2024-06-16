@@ -1,7 +1,7 @@
 export class ILogin {
   idLogin: string;
   email: string;
-  password: string;
+  mat_khau: string;
   newPassword: string;
   confirmPassword: string;
   verificationCode: string;
