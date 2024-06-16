@@ -12,7 +12,7 @@
   </nb-card-header>
 
   <nb-card-body>
-    <table class="table">
+    <table class="table" *ngIf="teaching?.length > 0">
       <thead>
         <tr>
           <th>Teacher </th>
@@ -26,7 +26,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let teacher_as of teaching">
+        <tr *ngFor="let teacher_as of Listpage">
           <td>
             <div *ngFor="let teacher of teachers">
               <span *ngIf="teacher_as.maGV == teacher.maGV">{{ teacher.ten_GV }}</span>
@@ -64,5 +64,9 @@
         </tr>
       </tbody>
     </table>
+    <app-paginator [current_page]="currentPage" [last_page]="lastPage" [apiUrl]="apiurl2" (dataList)="getPage($event)"></app-paginator>
+    <div *ngIf="teaching?.length === 0">
+      No teaching found.
+    </div>
   </nb-card-body>
 </nb-card>

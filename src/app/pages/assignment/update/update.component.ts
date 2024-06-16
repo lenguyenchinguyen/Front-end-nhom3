@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NbComponentShape, NbComponentSize, NbComponentStatus } from '@nebular/theme';
+import { NbToastrService, NbComponentShape, NbComponentSize, NbComponentStatus } from '@nebular/theme';
 
 import { ITeaching } from '../list/list.component';
 import { Teaching_assignmentService } from 'app/@core/services/apis/teaching_assignment.service';
@@ -27,6 +27,7 @@ export class UpdateComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private teacherService: TeacherService,
+    private toastrService: NbToastrService 
   ) {
     this.maASM = this.route.snapshot.params['maASM'];
 
@@ -59,12 +60,16 @@ export class UpdateComponent implements OnInit {
 
   saveTeaching() {
     if (this.putTeaching.valid) {
-      this.teachingService.putTeaching(this.maASM, this.putTeaching.value).subscribe(res => {
-        console.log(res);
-        this.router.navigate(['/pages/assignment/list']);
+      this.teachingService.putTeaching(this.maASM, this.putTeaching.value).subscribe({
+        next: (res) => this.handleSaveSuccess(res),
       });
     }
   }
+  handleSaveSuccess(res: any) {
+    this.toastrService.success('Successfully updated teacher information!', 'Success');
+    this.router.navigate(['/pages/assignment/list']);
+  }
+  
 
   getTeachers() {
     this.teacherService.getAllTeacher().subscribe(

@@ -29,7 +29,10 @@ export class ListComponent implements OnInit {
   classes: any[] = [];
   private _listFilter: string = '';
   allTeaching: ITeaching[] = [];
-
+  Listpage! : ITeaching[];
+  lastPage: number = 0;
+  currentPage : number = 0;
+  apiurl2 = `http://127.0.0.1:3300/api/teachers-asm`;
 
   constructor(
     private teacherService: TeacherService,
@@ -65,6 +68,9 @@ export class ListComponent implements OnInit {
       (res) => {
         this.teaching = res.data;
         this.allTeaching = res.data;
+        this.Listpage = res.data;
+        this.currentPage = res.current_page;
+        this.lastPage = res.last_page;
         console.log(res);
       },
       (error) => {
@@ -126,5 +132,9 @@ export class ListComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+  getPage(res:any) {
+    console.log(res);
+    this.Listpage = res
   }
 }

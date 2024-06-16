@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NbToastrService } from '@nebular/theme';
 
 import { TeacherService } from 'app/@core/services/apis/teacher.service';
 
@@ -15,7 +16,7 @@ export class AddComponent implements OnInit {
 
   constructor(private teacherService: TeacherService,
               private router: Router,
-  ) { }
+              private toastrService: NbToastrService) { }
 
   ngOnInit(): void {
     this.addForm = new FormGroup({
@@ -31,12 +32,28 @@ export class AddComponent implements OnInit {
   create() {
     if (this.addForm.valid) {
       this.teacherService.addTeacher(this.addForm.value).pipe().subscribe({
-        next: this.handleLoginSuccess.bind(this)
-      })
+        next: this.handleLoginSuccess.bind(this),
+        error: this.handleError.bind(this),
+      });
     }
   }
+
   protected handleLoginSuccess(res: any) {
-    this.router.navigate(['/pages/teacher/list']).then()
+    this.toastrService.show(
+      'Teacher added successfully!',
+      'Success',
+      { status: 'success' }
+    );
+    this.router.navigate(['/pages/teacher/list']).then();
     console.log(res);
-   }
   }
+
+  protected handleError(error: any) {
+    this.toastrService.show(
+      'Failed to add teacher. Please try again later.',
+      'Error',
+      { status: 'danger' }
+    );
+    console.error('Error adding teacher:', error);
+  }
+}

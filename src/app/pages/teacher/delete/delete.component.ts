@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-
-import { TeacherService } from 'app/@core/services/apis/teacher.service';
+import { NbDialogRef } from '@nebular/theme';
 
 @Component({
   selector: 'app-delete',
@@ -9,14 +7,13 @@ import { TeacherService } from 'app/@core/services/apis/teacher.service';
   styleUrls: ['./delete.component.scss']
 })
 export class DeleteComponent {
-  constructor(
-    private teacherService: TeacherService,
-    private router: Router,) { }
+  constructor(protected ref: NbDialogRef<DeleteComponent>) { }
 
-  deleteTeacher(maGV: number) {
-    this.teacherService.deleteOneTeacher(maGV).subscribe(res => {
-      console.log(res);
-      this.router.navigate(['/pages', 'teacher', 'list'])
-    });
+  confirm() {
+    this.ref.close(true);
+  }
+
+  cancel() {
+    this.ref.close(false);
   }
 }

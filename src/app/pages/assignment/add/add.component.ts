@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { NbToastrService } from '@nebular/theme';
 
 import { TeacherService } from 'app/@core/services/apis/teacher.service';
 import { Teaching_assignmentService } from 'app/@core/services/apis/teaching_assignment.service';
@@ -21,8 +22,9 @@ export class AddComponent implements OnInit {
   constructor(
     private teacherService: TeacherService,
     private teaching_assignmentService: Teaching_assignmentService,
+    private toastrService: NbToastrService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.addForm = new FormGroup({
@@ -41,7 +43,7 @@ export class AddComponent implements OnInit {
     this.getClasses();
   }
 
-  getTeachers(){
+  getTeachers() {
     this.teacherService.getAllTeacher().subscribe(
       (res) => {
         this.teachers = res.data;
@@ -52,7 +54,7 @@ export class AddComponent implements OnInit {
     );
   }
 
-  getSemesters(){
+  getSemesters() {
     this.teaching_assignmentService.getSemester().subscribe(
       (res) => {
         this.semesters = res.data;
@@ -63,7 +65,7 @@ export class AddComponent implements OnInit {
     );
   }
 
-  getSubjects(){
+  getSubjects() {
     this.teaching_assignmentService.getSubject().subscribe(
       (res) => {
         this.subjects = res.data;
@@ -74,7 +76,7 @@ export class AddComponent implements OnInit {
     );
   }
 
-  getSchoolYears(){
+  getSchoolYears() {
     this.teaching_assignmentService.getSchoolYear().subscribe(
       (res) => {
         this.school_years = res.data;
@@ -85,7 +87,7 @@ export class AddComponent implements OnInit {
     );
   }
 
-  getClasses(){
+  getClasses() {
     this.teaching_assignmentService.getClasse().subscribe(
       (res) => {
         this.classes = res.data;
@@ -99,10 +101,26 @@ export class AddComponent implements OnInit {
   create() {
     if (this.addForm.valid) {
       this.teaching_assignmentService.addTeachingAssignment(this.addForm.value).subscribe({
-        next: (res) => {
-          this.router.navigate(['/pages/assignment/list']);
-        }
+        next: this.handleLoginSuccess.bind(this),
+        error: this.handleError.bind(this),
       });
     }
+  }
+  protected handleLoginSuccess(res: any) {
+    this.toastrService.show(
+      'Teacher added successfully!',
+      'Success',
+      { status: 'success' }
+    );
+    this.router.navigate(['/pages/assignment/list']).then();
+    console.log(res);
+  }
+  protected handleError(error: any) {
+    this.toastrService.show(
+      'Failed to add teacher. Please try again later.',
+      'Error',
+      { status: 'danger' }
+    );
+    console.error('Error adding teacher:', error);
   }
 }

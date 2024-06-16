@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { NbToastrModule } from '@nebular/theme';
+import { PaginatorModule } from 'app/@theme/components/paginator/paginator.module';
 
 import {
   NbActionsModule,
@@ -41,6 +43,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     NbSelectModule,
     NbIconModule,
     ngFormsModule,
+    NbToastrModule,
+    PaginatorModule
   ],
   declarations: [
     AssignmentComponent,

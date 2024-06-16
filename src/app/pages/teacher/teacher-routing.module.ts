@@ -8,7 +8,6 @@ import { TeacherComponent } from './teacher.component';
 import { AssignmentComponent } from '../assignment/assignment.component';
 import { DeleteComponent } from './delete/delete.component';
 
-
 const routes: Routes = [
     {
       path: '',

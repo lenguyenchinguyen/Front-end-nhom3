@@ -14,8 +14,7 @@
                   addForm.get('ten_GV')?.invalid &&
                   (addForm.get('ten_GV')?.dirty ||
                     addForm.get('ten_GV')?.touched)
-                ">
-                Name không được bỏ trống !
+                "> Name cannot be left blank.
               </span>
             </div>
             <div class="col-lg-6">
@@ -37,8 +36,8 @@
                   (addForm.get('email')?.dirty ||
                     addForm.get('email')?.touched)
                 ">
-                <span *ngIf="addForm.get('email')?.errors?.required">Email không được bỏ trống!.</span>
-                <span *ngIf="addForm.get('email')?.errors?.email">Email không đúng định dạng!.</span>
+                <span *ngIf="addForm.get('email')?.errors?.required">Email cannot be left blank.</span>
+                <span *ngIf="addForm.get('email')?.errors?.email">Invalid email.</span>
               </div>
             </div>
             <div class="col-lg-6">
@@ -48,8 +47,7 @@
                   addForm.get('trinh_do')?.invalid &&
                   (addForm.get('trinh_do')?.dirty ||
                     addForm.get('trinh_do')?.touched)
-                ">
-                Level không được bỏ trống !
+                "> Level cannot be left blank.
               </span>
             </div>
           </div>
@@ -64,8 +62,8 @@
                 (addForm.get('mat_khau')?.dirty ||
                 addForm.get('mat_khau')?.touched)
               ">
-              <span *ngIf="addForm.get('mat_khau')?.errors?.required">Password không được bỏ trống!.</span>
-              <span *ngIf="addForm.get('mat_khau')?.errors?.minlength">Password từ 8 ký tự!.</span>
+              <span *ngIf="addForm.get('mat_khau')?.errors?.required">Password cannot be left blank.</span>
+              <span *ngIf="addForm.get('mat_khau')?.errors?.minlength">Password from 8 characters.</span>
             </div>
             </div>
             <div class="col-lg-6">
@@ -77,8 +75,8 @@
                 (addForm.get('dien_thoai')?.dirty ||
                   addForm.get('dien_thoai')?.touched)
               ">
-              <span *ngIf="addForm.get('dien_thoai')?.errors?.required">Phone không được bỏ trống!.</span>
-              <span *ngIf="addForm.get('dien_thoai')?.errors?.pattern">Phone phải có đúng 11 chữ số!</span>
+              <span *ngIf="addForm.get('dien_thoai')?.errors?.required">Phone cannot be left blank.</span>
+              <span *ngIf="addForm.get('dien_thoai')?.errors?.pattern">Phone must have 10 numbers.</span>
             </div>
             </div>
           </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { NbComponentShape, NbComponentSize, NbComponentStatus } from '@nebular/theme';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NbToastrService } from '@nebular/theme';
 
 import { TeacherService } from 'app/@core/services/apis/teacher.service';
 import { ITeacher } from '../list/list.component';
@@ -19,7 +20,8 @@ export class UpdateComponent implements OnInit {
   constructor(
     private teacherService: TeacherService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private toastrService: NbToastrService
   ) {}
 
   ngOnInit() {
@@ -41,14 +43,18 @@ export class UpdateComponent implements OnInit {
       this.putTeacher.patchValue(this.ListId);
     });
   }
-
   saveTeacher() {
     if (this.putTeacher.valid) {
-      this.teacherService.putTeacher(this.maGV, this.putTeacher.value).subscribe(res => {
-        console.log(res);
-        this.router.navigate(['/pages/teacher/list']);
-      });
+      this.teacherService.putTeacher(this.maGV, this.putTeacher.value).subscribe((res) => {
+          this.handleSaveSuccess(res);
+        },
+      );
     }
+  }
+  handleSaveSuccess(res: any) {
+    this.toastrService.success('Successfully updated teacher information!', 'Success');
+    this.router.navigate(['/pages/teacher/list']).then();
+    console.log(res);
   }
 
   statuses: NbComponentStatus[] = ['success'];

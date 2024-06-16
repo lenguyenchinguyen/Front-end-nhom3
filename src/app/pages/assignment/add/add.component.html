@@ -55,9 +55,9 @@
                   (addForm.get('ca_day')?.dirty ||
                     addForm.get('ca_day')?.touched)
                 ">
-              <span *ngIf="addForm.get('ca_day')?.errors?.required">teaching shift không được bỏ trống.</span>
-              <span *ngIf="addForm.get('ca_day')?.errors?.min">teaching shift không được nhỏ hơn 0.</span>
-              <span *ngIf="addForm.get('ca_day')?.errors?.max">teaching shift không được lớn hơn 5.</span>
+              <span *ngIf="addForm.get('ca_day')?.errors?.required">teaching shift cannot be left blank.</span>
+              <span *ngIf="addForm.get('ca_day')?.errors?.min">teaching shift cannot be less than 0.</span>
+              <span *ngIf="addForm.get('ca_day')?.errors?.max">teaching shift cannot be greater than 5.</span>
               </div>
             </div>
           </div>

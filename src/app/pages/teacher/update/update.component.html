@@ -12,7 +12,7 @@
               <input type="text" nbInput fullWidth placeholder="Name" name="ten_GV" formControlName="ten_GV" />
               <div class="text-danger"
                 *ngIf="putTeacher.get('ten_GV')?.invalid && (putTeacher.get('ten_GV')?.dirty || putTeacher.get('ten_GV')?.touched)">
-                <span *ngIf="putTeacher.get('ten_GV')?.errors?.required">Name không được bỏ trống!</span>
+                <span *ngIf="putTeacher.get('ten_GV')?.errors?.required">Name cannot be left blank.</span>
               </div>
             </div>
             <div class="col-lg-6">
@@ -31,8 +31,8 @@
               <input type="email" name="email" nbInput fullWidth placeholder="Email" formControlName="email" />
               <div class="text-danger"
                 *ngIf="putTeacher.get('email')?.invalid && (putTeacher.get('email')?.dirty || putTeacher.get('email')?.touched)">
-                <span *ngIf="putTeacher.get('email')?.errors?.required">Email không được bỏ trống!</span>
-                <span *ngIf="putTeacher.get('email')?.errors?.email">Email không hợp lệ!</span>
+                <span *ngIf="putTeacher.get('email')?.errors?.required">Email cannot be left blank.</span>
+                <span *ngIf="putTeacher.get('email')?.errors?.email">Invalid email.</span>
               </div>
             </div>
             <div class="col-lg-6">
@@ -40,7 +40,7 @@
               <input type="text" name="trinh_do" nbInput fullWidth placeholder="Level" formControlName="trinh_do" />
               <div class="text-danger"
                 *ngIf="putTeacher.get('trinh_do')?.invalid && (putTeacher.get('trinh_do')?.dirty || putTeacher.get('trinh_do')?.touched)">
-                <span *ngIf="putTeacher.get('trinh_do')?.errors?.required">Level không được bỏ trống!</span>
+                <span *ngIf="putTeacher.get('trinh_do')?.errors?.required">Level cannot be left blank.</span>
               </div>
             </div>
           </div>
@@ -52,18 +52,18 @@
                 formControlName="mat_khau" />
               <div class="text-danger"
                 *ngIf="putTeacher.get('mat_khau')?.invalid && (putTeacher.get('mat_khau')?.dirty || putTeacher.get('mat_khau')?.touched)">
-                <span *ngIf="putTeacher.get('mat_khau')?.errors?.required">Password không được bỏ trống!.</span>
-                <span *ngIf="putTeacher.get('mat_khau')?.errors?.minlength">Password từ 8 ký tự!.</span>
+                <span *ngIf="putTeacher.get('mat_khau')?.errors?.required">Password cannot be left blank.</span>
+                <span *ngIf="putTeacher.get('mat_khau')?.errors?.minlength">Password from 8 characters.</span>
               </div>
             </div>
             <div class="col-lg-6">
               <label for="dien_thoai">Phone Number</label>
-              <input type="number" name="dien_thoai" nbInput fullWidth placeholder="Phone Number"
+              <input type="text" name="dien_thoai" nbInput fullWidth placeholder="Phone Number"
                 formControlName="dien_thoai" />
               <div class="text-danger"
                 *ngIf="putTeacher.get('dien_thoai')?.invalid && (putTeacher.get('dien_thoai')?.dirty || putTeacher.get('dien_thoai')?.touched)">
-                <span *ngIf="putTeacher.get('dien_thoai')?.errors?.required">Phone không được bỏ trống!</span>
-                <span *ngIf="putTeacher.get('dien_thoai')?.errors?.pattern">Phone phải có đúng 11 chữ số!</span>
+                <span *ngIf="putTeacher.get('dien_thoai')?.errors?.required">Phone cannot be left blank.</span>
+                <span *ngIf="putTeacher.get('dien_thoai')?.errors?.pattern">Phone must have 10 numbers.</span>
               </div>
             </div>
           </div>

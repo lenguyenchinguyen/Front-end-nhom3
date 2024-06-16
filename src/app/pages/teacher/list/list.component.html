@@ -27,7 +27,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let teacher of teachers">
+        <tr *ngFor="let teacher of Listpage ">
           <td>{{ teacher.ten_GV }}</td>
           <td>{{ teacher.gioi_tinh }}</td>
           <td>{{ teacher.trinh_do }}</td>
@@ -39,17 +39,17 @@
                 <i class="nb-edit"></i>
               </button>
             </a>
-            <a routerLink="/pages/teacher/delete/{{teacher.maGV}}">
             <button  nbButton status="danger" size="medium" class="float-right ml-1 m-lg-2"  (click)="delete(teacher.maGV)">
               <i class="nb-trash"></i>
             </button>
-            </a>
           </td>
         </tr>
       </tbody>
     </table>
+    <app-paginator [current_page]="currentPage" [last_page]="lastPage" [apiUrl]="apiurl" (dataList)="getPage($event)"></app-paginator>
     <div *ngIf="teachers?.length === 0">
       No teachers found.
     </div>
+    
   </nb-card-body>
 </nb-card>
