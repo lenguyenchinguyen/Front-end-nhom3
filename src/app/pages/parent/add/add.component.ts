@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NbComponentShape, NbComponentSize, NbComponentStatus } from '@nebular/theme';
+import { NbComponentShape, NbComponentSize, NbComponentStatus,NbToastrService } from '@nebular/theme';
 import { ParentService } from 'app/@core/services/apis/parent.service';
 import { FormGroup, Validators, FormControl, NgForm } from '@angular/forms';
 
@@ -13,7 +13,7 @@ import { IStudent } from 'app/@core/interfaces/student.interface';
   styleUrls: ['./add.component.scss']
 })
 export class AddComponent implements OnInit {
-  constructor(private add: ParentService, private router: Router, private student:StudentService){ }
+  constructor(private parent: ParentService, private router: Router, private student:StudentService,private nbToastrService: NbToastrService){ }
   addForm!: FormGroup;
   listStudent : IStudent;
 
@@ -25,16 +25,24 @@ export class AddComponent implements OnInit {
       maHS: new FormControl('', Validators.required),
       email: new FormControl('', Validators.required),
       dia_chi: new FormControl('', Validators.required),
-      dien_thoai: new FormControl('', Validators.required),
+      dien_thoai: new FormControl('', [Validators.required,Validators.pattern('^[0-9]+$'), Validators.minLength(10), Validators.maxLength(10)]),
     });
     this.getStudent();
   }
 
+
+
+
+
   addParent(){
+    console.log(this.addForm);
+    
     if(this.addForm.valid) {
       console.log(this.addForm.value);
-      this.add.addParent(this.addForm.value).subscribe(res=> {
-        this.router.navigate(['/pages', 'parent', 'list'])
+      this.parent.addParent(this.addForm.value).subscribe({
+        // this.router.navigate(['/pages', 'parent', 'list'])
+        next: this.handleLoginSuccess.bind(this),
+        error: this.handleError.bind(this)
       })
     }
   }
@@ -44,6 +52,24 @@ export class AddComponent implements OnInit {
       console.log(res);
       this.listStudent = res.data
     })
+  }
+
+  protected handleLoginSuccess(res: any) {
+    this.nbToastrService.show(
+      'parent added successfully!',
+      'Success',
+      { status: 'success' }
+    );
+    this.router.navigate(['/pages/parent/list']).then();
+    console.log(res);
+  }
+  protected handleError(error: any) {
+    this.nbToastrService.show(
+      'Failed to add parent. Please try again later.',
+      'Error',
+      { status: 'danger' }
+    );
+    console.error('Error adding parent:', error);
   }
 
 

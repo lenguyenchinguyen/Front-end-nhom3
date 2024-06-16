@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NbComponentShape, NbComponentSize, NbComponentStatus } from '@nebular/theme';
+import { NbComponentShape, NbComponentSize, NbComponentStatus,NbToastrService } from '@nebular/theme';
 import { FormGroup, Validators, FormControl, NgForm } from '@angular/forms';
 import { StudentService } from 'app/@core/services/apis/student.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -11,7 +11,12 @@ import { IStudent } from 'app/@core/interfaces/student.interface';
   styleUrls: ['./update.component.scss']
 })
 export class UpdateComponent implements OnInit {
-  constructor(private update:StudentService, private router: Router, private route:ActivatedRoute){ }
+  constructor(
+    private update:StudentService,
+    private router: Router,
+    private route:ActivatedRoute,
+    private nbToastrService: NbToastrService
+  ){ }
   updateForm!: FormGroup;
   maHS = this.route.snapshot.params['maHS'];
   List:IStudent;
@@ -48,13 +53,27 @@ export class UpdateComponent implements OnInit {
 
   
 
+  // putStudent(){
+  //   if(this.updateForm.valid) {
+  //     console.log(this.updateForm.value);
+  //     this.update.updateStudent(this.maHS,this.updateForm.value).subscribe(res=> {
+  //       this.router.navigate(['/pages', 'student', 'list'])
+  //     })
+  //   }
+  // }
+
   putStudent(){
     if(this.updateForm.valid) {
       console.log(this.updateForm.value);
       this.update.updateStudent(this.maHS,this.updateForm.value).subscribe(res=> {
-        this.router.navigate(['/pages', 'student', 'list'])
+        this.handleSaveSuccess(res);
       })
     }
+  }
+  handleSaveSuccess(res: any) {
+    this.nbToastrService.success('Successfully updated student information!', 'Success');
+    this.router.navigate(['/pages/student/list']).then();
+    console.log(res);
   }
 
   statuses: NbComponentStatus[] = [ 'info' ];

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NbComponentShape, NbComponentSize, NbComponentStatus } from '@nebular/theme';
+import { NbComponentShape, NbComponentSize, NbComponentStatus,NbToastrService } from '@nebular/theme';
 import { ParentService } from 'app/@core/services/apis/parent.service';
 import { FormGroup, Validators, FormControl, NgForm } from '@angular/forms';
 import {ActivatedRoute, Router } from '@angular/router';
@@ -14,7 +14,8 @@ import { IStudent } from 'app/@core/interfaces/student.interface';
   styleUrls: ['./update.component.scss']
 })
 export class UpdateComponent implements OnInit {
-  constructor(private update:ParentService, private router: Router, private route:ActivatedRoute,private student:StudentService){ }
+  constructor(private update:ParentService, private router: Router, private route:ActivatedRoute,
+    private student:StudentService,private tb: NbToastrService){ }
   updateForm!: FormGroup;
   maPH =  this.route.snapshot.params['maPH'];
   List: IParent;
@@ -29,7 +30,7 @@ export class UpdateComponent implements OnInit {
       maHS: new FormControl('', Validators.required),
       email: new FormControl('', Validators.required),
       dia_chi: new FormControl('', Validators.required),
-      dien_thoai: new FormControl('', Validators.required),
+      dien_thoai: new FormControl('', [Validators.required,Validators.pattern('^[0-9]+$'), Validators.minLength(10), Validators.maxLength(10)]),
     });
     this.getUpdate(this.maPH);
     this.getStudent();
@@ -53,10 +54,18 @@ export class UpdateComponent implements OnInit {
     if(this.updateForm.valid) {
       console.log(this.updateForm.value);
       this.update.updateParent(this.maPH,this.updateForm.value).subscribe(res=> {
-        this.router.navigate(['/pages', 'parent', 'list'])
+        // this.router.navigate(['/pages', 'parent', 'list'])
+        this.handleSaveSuccess(res);
       })
     }
   }
+
+  handleSaveSuccess(res: any) {
+    this.tb.success('Successfully updated parent information!', 'Success');
+    this.router.navigate(['/pages/parent/list']).then();
+    console.log(res);
+  }
+
 
 
   statuses: NbComponentStatus[] = [ 'success' ];

@@ -1,27 +1,29 @@
 <nb-card>
   <nb-card-header>
-    <h3 class="">List Student </h3>
-    <a routerLink="/pages/student/add" class="d-flex justify-content-end">
+    <h3 >List Student </h3>
+    <a class="d-flex justify-content-end" routerLink="/pages/student/add">
       <button nbButton status="primary" class="add-button" size="small">Add Student</button>
     </a>
   </nb-card-header>
   <nb-card-body>
+    
+
     <table class="table">
       <thead>
       <tr>
-        <th>STT</th>
-        <th>Name</th>
-        <th>gender</th>
-        <th>Date_of_birth</th>
-        <th>Adrress</th>
-        <th>email</th>
-        <th>Class</th>
+        <th width="5%">STT</th>
+        <th width="12%">Name</th>
+        <th width="10%">gender</th>
+        <th width="10%">Date_of_birth</th>
+        <th width="10%">Adrress</th>
+        <th width="15%">email</th>
+        <th width="10%">Class</th>
         <th>Actions</th>
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let student of List; index as i">
-        <td>{{ i+1 }}</td>
+      <tr *ngFor="let student of Listpage; index as i">
+        <td>{{ stt+i+1 }}</td>
         <td>{{ student.ho_ten}}</td>
         <td>{{ student.gioi_tinh}}</td>
         <td>{{ student.ngay_sinh}}</td>
@@ -43,9 +45,9 @@
               <i class="nb-edit" [nbIcon]="editIconConfig" [iconSize]="'large'"></i>
             </button>
           </a>
-
-          <a routerLink="/pages/student/delete/{{student.maHS}}">
-            <button (click)="deleteStudent(student.maHS)" nbButton status="danger" size="medium" class="float-right ml-1 m-lg-2">
+          <!-- routerLink="/pages/student/delete/{{student.maHS}}" -->
+          <a>
+            <button (click)="delete(student.maHS)" nbButton status="danger" size="medium" class="float-right ml-1 m-lg-2">
               <i class="nb-trash" [nbIcon]="trashIconConfig" [iconSize]="'large'"></i>
             </button>
           </a>
@@ -53,5 +55,14 @@
       </tr>
       </tbody>
     </table>
+    <app-paginator
+                [current_page]="currentPage"
+                [last_page]="lastPage"
+                [apiUrl]="apiurl"
+                (dataList)="getPage($event)"
+                (STT)="getStt($event)">
+                >
+  </app-paginator>
   </nb-card-body>
+
 </nb-card>

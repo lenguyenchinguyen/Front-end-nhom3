@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NbComponentShape, NbComponentSize, NbComponentStatus } from '@nebular/theme';
+import { NbComponentShape, NbComponentSize, NbComponentStatus,NbToastrService } from '@nebular/theme';
 import { FormGroup, Validators, FormControl, NgForm } from '@angular/forms';
 import { StudentService } from 'app/@core/services/apis/student.service';
 import { Router } from '@angular/router';
@@ -11,7 +11,7 @@ import { IStudent } from 'app/@core/interfaces/student.interface';
   styleUrls: ['./add.component.scss']
 })
 export class AddComponent implements OnInit {
-  constructor(private add:StudentService, private router: Router){ }
+  constructor(private student:StudentService, private router: Router, private nbToastrService: NbToastrService){ }
   addForm!: FormGroup;
   listClass : IStudent;
 
@@ -29,7 +29,7 @@ export class AddComponent implements OnInit {
   }
 
   getClass() {
-    this.add.getClass().subscribe(res => {
+    this.student.getClass().subscribe(res => {
       console.log(res);
       this.listClass = res.data;
     })
@@ -39,10 +39,30 @@ export class AddComponent implements OnInit {
   addStudent(){
     if(this.addForm.valid) {
       console.log(this.addForm.value);
-      this.add.addStudent(this.addForm.value).subscribe(res=> {
-        this.router.navigate(['/pages', 'student', 'list'])
+      this.student.addStudent(this.addForm.value).subscribe({
+        next: this.handleLoginSuccess.bind(this),
+        // this.router.navigate(['/pages', 'student', 'list'])
+        error: this.handleError.bind(this)
       })
     }
+  }
+
+  protected handleLoginSuccess(res: any) {
+    this.nbToastrService.show(
+      'Student added successfully!',
+      'Success',
+      { status: 'success' }
+    );
+    this.router.navigate(['/pages/student/list']).then();
+    console.log(res);
+  }
+  protected handleError(error: any) {
+    this.nbToastrService.show(
+      'Failed to add Student. Please try again later.',
+      'Error',
+      { status: 'danger' }
+    );
+    console.error('Error adding Student:', error);
   }
 
   statuses: NbComponentStatus[] = [ 'info' ];

@@ -23,6 +23,9 @@ import { ListComponent } from './list/list.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DeleteComponent } from './delete/delete.component';
 
+import { PaginatorModule } from 'app/@theme/components/paginator/paginator.module';
+
+
 
 @NgModule({
   imports: [
@@ -41,6 +44,7 @@ import { DeleteComponent } from './delete/delete.component';
     NbIconModule,
     ngFormsModule,
     ReactiveFormsModule,
+    PaginatorModule
   ],
   declarations: [
     ParentComponent,

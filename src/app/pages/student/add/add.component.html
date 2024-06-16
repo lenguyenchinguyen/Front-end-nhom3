@@ -11,29 +11,28 @@
             <div class="col-lg-6">
               <div class="form-group mb-3">
                 <label for="name" class="form-label">Name</label>
-                <input type="text" id="ho_ten" name="ho_ten" class="form-control" nbInput fullWidth placeholder="Name"
-                  formControlName="ho_ten"  />
-                <span class="text-danger"
-                *ngIf="addForm.get('ho_ten')!.invalid && (addForm.get('ho_ten')!.dirty || addForm.get('ho_ten')!.touched)">
-              Name không hợp lệ !
-            </span>
+                <input type="text" id="ho_ten" name="ho_ten" class="form-control" nbInput fullWidth placeholder="Name" formControlName="ho_ten"  />
+                <span class="text-danger" *ngIf="addForm.get('ho_ten')!.invalid && (addForm.get('ho_ten')!.dirty || addForm.get('ho_ten')!.touched)">
+                  Invalid Name!
+                </span>
               </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-6" style="margin-top: 9px;"> 
               <div class="form-group mb-3">
-                <label for="gender">Gender</label>
-                <select class="form-select" id="gioi_tinh" name="gioi_tinh" aria-label="Default select example"  formControlName="gioi_tinh" >
+                <label for="gender" >Gender</label>
+                <select class="form-select" id="gioi_tinh" name="gioi_tinh" aria-label="Default select example" formControlName="gioi_tinh">
                   <option selected disabled>Gender</option>
-                  <option value="nam">Nam</option>
-                  <option value="nu">Nữ</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
                 </select>
-                <span class="text-danger"
-                *ngIf="addForm.get('gioi_tinh')!.invalid && (addForm.get('gioi_tinh')!.dirty || addForm.get('gioi_tinh')!.touched)">
-              Gender không hợp lệ !
-            </span>
+                <span class="text-danger" *ngIf="addForm.get('gioi_tinh')!.invalid && (addForm.get('gioi_tinh')!.dirty || addForm.get('gioi_tinh')!.touched)">
+                Gender is not valid!
+                </span>
               </div>
             </div>
           </div>
+          
+          
 
           <div class="row mt-3">
             <div class="col-lg-6">
@@ -42,7 +41,7 @@
                 <input type="date" id="ngay_sinh" name="ngay_sinh" nbInput fullWidth placeholder="Ngày sinh" formControlName="ngay_sinh"/>
                 <span class="text-danger"
                 *ngIf="addForm.get('ngay_sinh')!.invalid && (addForm.get('ngay_sinh')!.dirty || addForm.get('ngay_sinh')!.touched)">
-                Date of Birth không hợp lệ !
+                Date of Birth is invalid!
             </span>
               </div>
               <div class="form-group mb-3">
@@ -55,17 +54,19 @@
                </nb-select> 
                 <span class="text-danger"
                 *ngIf="addForm.get('maLop')!.invalid && (addForm.get('maLop')!.dirty || addForm.get('maLop')!.touched)">
-                Class không hợp lệ !
+                Invalid Class!
             </span>
               </div>
             </div>
+
+            
             <div class="col-lg-6">
               <div class="form-group mb-3">
                 <label for="Email">Email</label>
                 <input type="email" pattern=[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$ name="email" id="email" nbInput fullWidth placeholder="Email" formControlName="email"/>
                 <span class="text-danger"
                 *ngIf="addForm.get('email')!.invalid && (addForm.get('email')!.dirty || addForm.get('email')!.touched)">
-                Email không hợp lệ !
+                Invalid Email !
             </span>
               </div>
               <div class="form-group mb-3">
@@ -73,7 +74,7 @@
                 <input type="text" name="dia_chi" id="dia_chi" nbInput fullWidth placeholder="Address" formControlName="dia_chi"/>
                 <span class="text-danger"
                 *ngIf="addForm.get('dia_chi')!.invalid && (addForm.get('dia_chi')!.dirty || addForm.get('dia_chi')!.touched)">
-                Address không hợp lệ !
+                Invalid Address!
             </span>
               </div>
             </div>
@@ -85,7 +86,7 @@
                 Add
               </button>
 
-              <button routerLink="/pages/student/list"  type="submit" nbButton status="danger" class="btn btn-primary" style="margin-left: 10px;">
+              <button routerLink="/pages/student/list"  type="submit" nbButton class="btn btn-secondary" style="margin-left: 10px;">
                 Back
               </button>
             </div>
