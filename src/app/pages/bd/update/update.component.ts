@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NbToastrService } from '@nebular/theme';
 import { ITranscript } from 'app/@core/interfaces/transcript.interface';
 import { TranscriptService } from 'app/@core/services/apis/transcript.service';
 
@@ -10,7 +11,7 @@ import { TranscriptService } from 'app/@core/services/apis/transcript.service';
   styleUrls: ['./update.component.scss']
 })
 export class UpdateComponent implements OnInit {
-  constructor(private update: TranscriptService, private takeRouter: ActivatedRoute, private router: Router ){}
+  constructor(private update: TranscriptService, private takeRouter: ActivatedRoute, private router: Router,  private toastrService: NbToastrService ){}
   updateForm: FormGroup;
   student: ITranscript
   year: ITranscript
@@ -45,10 +46,29 @@ export class UpdateComponent implements OnInit {
 
   saveUpdateTranscript(){
     if(this.updateForm.valid){
-      this.update.putTranscript(this.maBD,this.updateForm.value).subscribe(res => {
-        this.router.navigate(['/pages', 'bd', 'list']);
+      this.update.putTranscript(this.maBD,this.updateForm.value).pipe().subscribe( {
+        next: this.handleLoginSuccess.bind(this),
+        error: this.handleError.bind(this),
       })
     }
+  }
+  protected handleLoginSuccess(res: any) {
+    this.toastrService.show(
+      'Point has been updated successfully!',
+      'Success',
+      { status: 'success' }
+    );
+    this.router.navigate(['/pages/bd/list']).then();
+    console.log(res);
+  }
+
+  protected handleError(error: any) {
+    this.toastrService.show(
+      'Failed to update transcript. Please try again later.',
+      'Error',
+      { status: 'danger' }
+    );
+    console.error('Error adding transcript:', error);
   }
 
   cancle(){

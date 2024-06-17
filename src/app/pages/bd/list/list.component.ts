@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NbDialogService, NbToastrService } from '@nebular/theme';
 import { ITranscript } from 'app/@core/interfaces/transcript.interface';
 import { TranscriptService } from 'app/@core/services/apis/transcript.service';
+import { DeleteComponent } from '../delete/delete.component';
 
 @Component({
   selector: 'ngx-smart-table',
@@ -13,7 +15,8 @@ export class ListComponent implements OnInit {
   //nextPage: number =0;
   //previousPage: number =0;
   apiUrl = "http://127.0.0.1:3300/api/transcripts"
-  constructor(private transcript: TranscriptService){}
+  constructor(private transcript: TranscriptService, private dialogService: NbDialogService,
+    private toastrService: NbToastrService,) { }
   listBd: ITranscript[]
   student: ITranscript
   year: ITranscript
@@ -41,29 +44,29 @@ export class ListComponent implements OnInit {
 
     })
   }
-  getPage(res: any){
+  getPage(res: any) {
     console.log(res);
     this.filteredListBd = res
   }
-  getAllSubject(){
+  getAllSubject() {
     this.transcript.getSubject().subscribe(res => {
       this.subject = res.data
     })
   }
 
-  getAllYear(){
+  getAllYear() {
     this.transcript.getYear().subscribe(res => {
       this.year = res.data
     })
   }
 
-  getAllSemester(){
+  getAllSemester() {
     this.transcript.getSemester().subscribe(res => {
       this.semester = res.data
     })
   }
 
-  getAllStudent(){
+  getAllStudent() {
     this.transcript.getStudent().subscribe(res => {
       this.student = res.data
     })
@@ -78,14 +81,21 @@ export class ListComponent implements OnInit {
     }
   }
 
-  deleteTranscript(maBD: number) {
-    const confirmDelete = confirm("Do you want delete this subject?");
-    if (confirmDelete) {
-      this.transcript.deleteTranscript(maBD).subscribe(res => {
-        console.log(res);
-        this.getAllBD();
+  // 
+  deleteTranscript(maMon: number) {
+    this.dialogService.open(DeleteComponent)
+      .onClose.subscribe((confirmed: boolean) => {
+        if (confirmed) {
+          this.transcript.deleteTranscript(maMon).subscribe({
+            next: res => {
+              this.toastrService.show('Transcript has been deleted successfully !', 'Success', { status: 'success' });
+              this.getAllBD();
+            },
+            error: err => {
+              this.toastrService.show('Delete failed. Please try again.', 'Error', { status: 'danger' });
+            }
+          });
+        }
       });
-    }
   }
-
 }

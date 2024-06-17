@@ -22,6 +22,7 @@ import { ListComponent } from './list/list.component';
 import { AddComponent } from './add/add.component';
 import { UpdateComponent } from './update/update.component';
 import { PaginatorModule } from 'app/@theme/components/paginator/paginator.module';
+import { DeleteComponent } from './delete/delete.component';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { PaginatorModule } from 'app/@theme/components/paginator/paginator.modul
     ListComponent,
     AddComponent,
     UpdateComponent,
+    DeleteComponent,
 
   ],
 })

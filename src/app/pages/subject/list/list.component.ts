@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NbDialogService, NbToastrService } from '@nebular/theme';
 import { ISubject } from 'app/@core/interfaces/subject.interface';
 import { SubjectService } from 'app/@core/services/apis/subject.service';
+import { DeleteComponent } from '../delete/delete.component';
 
 @Component({
   selector: 'app-list',
@@ -16,7 +18,8 @@ export class ListComponent implements OnInit {
   apiUrl = "http://127.0.0.1:3300/api/subject"
   constructor(
     private sub: SubjectService,
-
+    private dialogService: NbDialogService,
+    private toastrService: NbToastrService,
   ) { }
   LitsSub!: ISubject
 
@@ -39,13 +42,29 @@ export class ListComponent implements OnInit {
     this.LitsSub = res
   }
 
+  // deleteSubject(maMon: number) {
+  //   const confirmDelete = confirm("Do you want delete this subject?");
+  //   if (confirmDelete) {
+  //     this.sub.deleteSubject(maMon).subscribe(res => {
+  //       console.log(res);
+  //       this.getSubject();
+  //     });
+  //   }
+  // }
   deleteSubject(maMon: number) {
-    const confirmDelete = confirm("Do you want delete this subject?");
-    if (confirmDelete) {
-      this.sub.deleteSubject(maMon).subscribe(res => {
-        console.log(res);
-        this.getSubject();
+    this.dialogService.open(DeleteComponent)
+      .onClose.subscribe((confirmed: boolean) => {
+        if (confirmed) {
+          this.sub.deleteSubject(maMon).subscribe({
+            next: res => {
+              this.toastrService.show('Subject has been deleted successfully!', 'Success', { status: 'success' });
+              this.getSubject(); 
+            },
+            error: err => {
+              this.toastrService.show('Delete failed. Please try again.', 'Error', { status: 'danger' });
+            }
+          });
+        }
       });
     }
-  }
 }

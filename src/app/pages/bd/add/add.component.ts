@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NbToastrService } from '@nebular/theme';
 import { ITranscript } from 'app/@core/interfaces/transcript.interface';
 import { TranscriptService } from 'app/@core/services/apis/transcript.service';
 
@@ -10,7 +11,7 @@ import { TranscriptService } from 'app/@core/services/apis/transcript.service';
   styleUrls: ['./add.component.scss']
 })
 export class AddComponent implements OnInit{
-  constructor(private add: TranscriptService, private router: Router){}
+  constructor(private add: TranscriptService, private router: Router, private toastrService: NbToastrService){}
   addForm: FormGroup;
   student: ITranscript
   year: ITranscript
@@ -34,11 +35,29 @@ export class AddComponent implements OnInit{
 
   addTranscript(){
     if (this.addForm.valid) {
-      this.add.postTranscript(this.addForm.value).subscribe(res => {
-        console.log(res);
-        this.router.navigate(['/pages','bd', 'list'])
+      this.add.postTranscript(this.addForm.value).pipe().subscribe( {
+        next: this.handleLoginSuccess.bind(this),
+        error: this.handleError.bind(this),
       })
     }
+  }
+  protected handleLoginSuccess(res: any) {
+    this.toastrService.show(
+      'Transcript has been added successfully!',
+      'Success',
+      { status: 'success' }
+    );
+    this.router.navigate(['/pages/bd/list']).then();
+    console.log(res);
+  }
+
+  protected handleError(error: any) {
+    this.toastrService.show(
+      'Failed to add transcript. Please try again later.',
+      'Error',
+      { status: 'danger' }
+    );
+    console.error('Error adding transcript:', error);
   }
 
   getAllSubject(){
